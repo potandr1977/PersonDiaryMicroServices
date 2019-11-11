@@ -3,9 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.WebClient", "src\PersonDiary.WebClient\PersonDiary.WebClient.csproj", "{1FB51362-9D76-46EB-B4E3-FA710A59C699}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.WebClient", "src\PersonDiary.WebClient\PersonDiary.WebClient.csproj", "{1FB51362-9D76-46EB-B4E3-FA710A59C699}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.GateWay", "src\PersonDiary.GateWay\PersonDiary.GateWay.csproj", "{2AF853C4-F092-470B-BBC1-F8B782EE1F95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.GateWay", "src\PersonDiary.GateWay\PersonDiary.GateWay.csproj", "{2AF853C4-F092-470B-BBC1-F8B782EE1F95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "microservices", "microservices", "{28629E89-5DEE-4CF8-BD68-E5E128F8796A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lifeevent", "lifeevent", "{F7762B28-E881-4BD6-BABB-0303DE2E3591}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "person", "person", "{99F6FFD7-765E-44A3-8430-4ACAD9462747}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Person.Domain", "src\microservices\person\PersonDiary.Person.Domain\PersonDiary.Person.Domain.csproj", "{73BDDD67-A40C-4C84-9B6A-4D5A291DADA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Lifeevent.Domain", "src\microservices\lifeevent\PersonDiary.Lifeevent.Domain\PersonDiary.Lifeevent.Domain.csproj", "{69AEAB0C-8DAF-49F7-A6E0-972F0CE4E853}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Lifeevent.Business", "src\microservices\lifeevent\PersonDiary.Lifeevent.Business\PersonDiary.Lifeevent.Business.csproj", "{D4AA08B5-064F-4DCD-BA95-D2614D9AE4F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Lifeevent.Dto", "src\microservices\lifeevent\PersonDiary.Lifeevent.Dto\PersonDiary.Lifeevent.Dto.csproj", "{E666ED36-3CF0-4210-848B-2588F3A4CEB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Infrastructure", "PersonDiary.Infrastructure\PersonDiary.Infrastructure.csproj", "{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +37,37 @@ Global
 		{2AF853C4-F092-470B-BBC1-F8B782EE1F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AF853C4-F092-470B-BBC1-F8B782EE1F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AF853C4-F092-470B-BBC1-F8B782EE1F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73BDDD67-A40C-4C84-9B6A-4D5A291DADA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73BDDD67-A40C-4C84-9B6A-4D5A291DADA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73BDDD67-A40C-4C84-9B6A-4D5A291DADA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73BDDD67-A40C-4C84-9B6A-4D5A291DADA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69AEAB0C-8DAF-49F7-A6E0-972F0CE4E853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69AEAB0C-8DAF-49F7-A6E0-972F0CE4E853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69AEAB0C-8DAF-49F7-A6E0-972F0CE4E853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69AEAB0C-8DAF-49F7-A6E0-972F0CE4E853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4AA08B5-064F-4DCD-BA95-D2614D9AE4F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4AA08B5-064F-4DCD-BA95-D2614D9AE4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4AA08B5-064F-4DCD-BA95-D2614D9AE4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4AA08B5-064F-4DCD-BA95-D2614D9AE4F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E666ED36-3CF0-4210-848B-2588F3A4CEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E666ED36-3CF0-4210-848B-2588F3A4CEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E666ED36-3CF0-4210-848B-2588F3A4CEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E666ED36-3CF0-4210-848B-2588F3A4CEB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F7762B28-E881-4BD6-BABB-0303DE2E3591} = {28629E89-5DEE-4CF8-BD68-E5E128F8796A}
+		{99F6FFD7-765E-44A3-8430-4ACAD9462747} = {28629E89-5DEE-4CF8-BD68-E5E128F8796A}
+		{73BDDD67-A40C-4C84-9B6A-4D5A291DADA0} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
+		{69AEAB0C-8DAF-49F7-A6E0-972F0CE4E853} = {F7762B28-E881-4BD6-BABB-0303DE2E3591}
+		{D4AA08B5-064F-4DCD-BA95-D2614D9AE4F6} = {F7762B28-E881-4BD6-BABB-0303DE2E3591}
+		{E666ED36-3CF0-4210-848B-2588F3A4CEB2} = {F7762B28-E881-4BD6-BABB-0303DE2E3591}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AAC8C9B1-161C-4C87-B2CE-D7C53C230A5D}
