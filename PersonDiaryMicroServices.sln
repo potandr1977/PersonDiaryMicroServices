@@ -13,15 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lifeevent", "lifeevent", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "person", "person", "{99F6FFD7-765E-44A3-8430-4ACAD9462747}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Person.Domain", "src\microservices\person\PersonDiary.Person.Domain\PersonDiary.Person.Domain.csproj", "{73BDDD67-A40C-4C84-9B6A-4D5A291DADA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Person.Domain", "src\microservices\person\PersonDiary.Person.Domain\PersonDiary.Person.Domain.csproj", "{73BDDD67-A40C-4C84-9B6A-4D5A291DADA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Lifeevent.Domain", "src\microservices\lifeevent\PersonDiary.Lifeevent.Domain\PersonDiary.Lifeevent.Domain.csproj", "{69AEAB0C-8DAF-49F7-A6E0-972F0CE4E853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.Domain", "src\microservices\lifeevent\PersonDiary.Lifeevent.Domain\PersonDiary.Lifeevent.Domain.csproj", "{69AEAB0C-8DAF-49F7-A6E0-972F0CE4E853}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Lifeevent.Business", "src\microservices\lifeevent\PersonDiary.Lifeevent.Business\PersonDiary.Lifeevent.Business.csproj", "{D4AA08B5-064F-4DCD-BA95-D2614D9AE4F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.Business", "src\microservices\lifeevent\PersonDiary.Lifeevent.Business\PersonDiary.Lifeevent.Business.csproj", "{D4AA08B5-064F-4DCD-BA95-D2614D9AE4F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Lifeevent.Dto", "src\microservices\lifeevent\PersonDiary.Lifeevent.Dto\PersonDiary.Lifeevent.Dto.csproj", "{E666ED36-3CF0-4210-848B-2588F3A4CEB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.Dto", "src\microservices\lifeevent\PersonDiary.Lifeevent.Dto\PersonDiary.Lifeevent.Dto.csproj", "{E666ED36-3CF0-4210-848B-2588F3A4CEB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Infrastructure", "PersonDiary.Infrastructure\PersonDiary.Infrastructure.csproj", "{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure", "PersonDiary.Infrastructure\PersonDiary.Infrastructure.csproj", "{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.EventBus", "src\microservices\lifeevent\PersonDiary.Lifeevent.EventBus\PersonDiary.Lifeevent.EventBus.csproj", "{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.RabbitConsumerWorker", "src\PersonDiary.RabbitConsumerWorker\PersonDiary.RabbitConsumerWorker.csproj", "{A1A5F75C-54E9-437F-BAA2-2C765EA8BD44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1A5F75C-54E9-437F-BAA2-2C765EA8BD44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A5F75C-54E9-437F-BAA2-2C765EA8BD44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A5F75C-54E9-437F-BAA2-2C765EA8BD44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A5F75C-54E9-437F-BAA2-2C765EA8BD44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +80,7 @@ Global
 		{69AEAB0C-8DAF-49F7-A6E0-972F0CE4E853} = {F7762B28-E881-4BD6-BABB-0303DE2E3591}
 		{D4AA08B5-064F-4DCD-BA95-D2614D9AE4F6} = {F7762B28-E881-4BD6-BABB-0303DE2E3591}
 		{E666ED36-3CF0-4210-848B-2588F3A4CEB2} = {F7762B28-E881-4BD6-BABB-0303DE2E3591}
+		{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D} = {F7762B28-E881-4BD6-BABB-0303DE2E3591}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AAC8C9B1-161C-4C87-B2CE-D7C53C230A5D}

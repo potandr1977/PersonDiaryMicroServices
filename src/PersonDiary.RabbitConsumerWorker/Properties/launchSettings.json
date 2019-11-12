@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "PersonDiary.RabbitConsumerWorker": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
