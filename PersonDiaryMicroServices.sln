@@ -21,15 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.Busin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.Dto", "src\microservices\lifeevent\PersonDiary.Lifeevent.Dto\PersonDiary.Lifeevent.Dto.csproj", "{E666ED36-3CF0-4210-848B-2588F3A4CEB2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure", "PersonDiary.Infrastructure\PersonDiary.Infrastructure.csproj", "{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.EventBus", "src\microservices\lifeevent\PersonDiary.Lifeevent.EventBus\PersonDiary.Lifeevent.EventBus.csproj", "{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.RabbitConsumerWorker", "src\PersonDiary.RabbitConsumerWorker\PersonDiary.RabbitConsumerWorker.csproj", "{A1A5F75C-54E9-437F-BAA2-2C765EA8BD44}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{337AAE03-4B57-435C-A88D-B35B1EB2709F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Rabbit.EventBus", "src\infrastructure\PersonDiary.Rabbit.EventBus\PersonDiary.Rabbit.EventBus.csproj", "{496CFE10-FFEF-43CE-82D4-EECD6040244C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Rabbit.EventBus", "src\infrastructure\PersonDiary.Rabbit.EventBus\PersonDiary.Rabbit.EventBus.csproj", "{496CFE10-FFEF-43CE-82D4-EECD6040244C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +59,6 @@ Global
 		{E666ED36-3CF0-4210-848B-2588F3A4CEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E666ED36-3CF0-4210-848B-2588F3A4CEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E666ED36-3CF0-4210-848B-2588F3A4CEB2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB52E977-AFA3-495D-8A9B-BE4BDBA21C81}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}.Release|Any CPU.ActiveCfg = Release|Any CPU
