@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PersonDiary.Rabbit.EventBus
+namespace PersonDiary.EventBus.RabbitMq
 {
     public class Class1
     {

@@ -5,10 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Mappers\" />
-    <Folder Include="HttpApiClients\" />
-    <Folder Include="Factories\" />
-    <Folder Include="Services\EventBus\" />
+    <Compile Remove="Factories\**" />
+    <Compile Remove="HttpApiClients\**" />
+    <Compile Remove="Mappers\**" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Factories\**" />
+    <EmbeddedResource Remove="HttpApiClients\**" />
+    <EmbeddedResource Remove="Mappers\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Factories\**" />
+    <None Remove="HttpApiClients\**" />
+    <None Remove="Mappers\**" />
+    <None Remove="Services\**" />
   </ItemGroup>
 
 </Project>
