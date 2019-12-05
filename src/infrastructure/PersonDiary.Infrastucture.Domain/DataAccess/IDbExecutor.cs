@@ -1,11 +1,12 @@
-﻿using PersonDiary.Infrastucture.Domain.Models.Models;
+﻿using PersonDiary.Infrastucture.Domain.Models.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PersonDiary.Infrastucture.Domain.DataAccess
 {
-    public interface DbExecutor
+    public interface IDbExecutor
     {
         Task<List<T>> QueryAsync<T>(QueryObject queryObject, QuerySetting settings = null);
     }
