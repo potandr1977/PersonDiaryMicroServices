@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PersonDiary.Cache.Redis
+namespace PersonDiary.Infrastructure.Cache.Redis
 {
     public class Class1
     {
