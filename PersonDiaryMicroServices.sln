@@ -29,15 +29,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure.Domain", "src\infrastructure\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj", "{657B88A4-43C9-4E20-B282-080EDEF83CBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Infrastructure.Consul", "src\infrastructure\PersonDiary.Infrastructure.Consul\PersonDiary.Infrastructure.Consul.csproj", "{76AE1D4B-9EE2-4A5D-8F2F-F07D9B8A0D89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure.Consul", "src\infrastructure\PersonDiary.Infrastructure.Consul\PersonDiary.Infrastructure.Consul.csproj", "{76AE1D4B-9EE2-4A5D-8F2F-F07D9B8A0D89}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure.DataAccess", "src\infrastructure\PersonDiary.Infrastructure.DataAccess\PersonDiary.Infrastructure.DataAccess.csproj", "{88AF1E13-7171-4ED9-BA99-92181FE728E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Infrastructure.EventBus.RabbitMq", "src\infrastructure\PersonDiary.Infrastructure.EventBus.RabbitMq\PersonDiary.Infrastructure.EventBus.RabbitMq.csproj", "{9E4E816F-6B3F-4945-8258-21F42BB656E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure.EventBus.RabbitMq", "src\infrastructure\PersonDiary.Infrastructure.EventBus.RabbitMq\PersonDiary.Infrastructure.EventBus.RabbitMq.csproj", "{9E4E816F-6B3F-4945-8258-21F42BB656E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Infrastructure.Cache.Redis", "src\infrastructure\PersonDiary.Infrastructure.Cache.Redis\PersonDiary.Infrastructure.Cache.Redis.csproj", "{5545927E-47B8-414F-889D-0D2D0E25FFE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure.Cache.Redis", "src\infrastructure\PersonDiary.Infrastructure.Cache.Redis\PersonDiary.Infrastructure.Cache.Redis.csproj", "{5545927E-47B8-414F-889D-0D2D0E25FFE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Infractructure.DataAccess.Mongo", "src\infrastructure\PersonDiary.Infractructure.DataAccess.Mongo\PersonDiary.Infractructure.DataAccess.Mongo.csproj", "{FFF07CED-6812-474B-9DED-D3807B10FCA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infractructure.DataAccess.Mongo", "src\infrastructure\PersonDiary.Infractructure.DataAccess.Mongo\PersonDiary.Infractructure.DataAccess.Mongo.csproj", "{FFF07CED-6812-474B-9DED-D3807B10FCA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Lifeevent.WebApi", "src\microservices\lifeevent\PersonDiary.Lifeevent.WebApi\PersonDiary.Lifeevent.WebApi.csproj", "{95FC66B6-0DA9-4E91-9560-B3130C0A3E70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Person.WebApi", "src\microservices\person\PersonDiary.Person.WebApi\PersonDiary.Person.WebApi.csproj", "{73E30968-FB1E-4A71-90D0-A10A73B480BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Infractructure.Settings", "src\infrastructure\PersonDiary.Infractructure.Settings\PersonDiary.Infractructure.Settings.csproj", "{95341707-86F4-4049-99CB-CB1DF3DF6AD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +107,18 @@ Global
 		{FFF07CED-6812-474B-9DED-D3807B10FCA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFF07CED-6812-474B-9DED-D3807B10FCA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFF07CED-6812-474B-9DED-D3807B10FCA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95FC66B6-0DA9-4E91-9560-B3130C0A3E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95FC66B6-0DA9-4E91-9560-B3130C0A3E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95FC66B6-0DA9-4E91-9560-B3130C0A3E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95FC66B6-0DA9-4E91-9560-B3130C0A3E70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73E30968-FB1E-4A71-90D0-A10A73B480BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73E30968-FB1E-4A71-90D0-A10A73B480BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73E30968-FB1E-4A71-90D0-A10A73B480BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73E30968-FB1E-4A71-90D0-A10A73B480BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95341707-86F4-4049-99CB-CB1DF3DF6AD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95341707-86F4-4049-99CB-CB1DF3DF6AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95341707-86F4-4049-99CB-CB1DF3DF6AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95341707-86F4-4049-99CB-CB1DF3DF6AD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,6 +137,9 @@ Global
 		{9E4E816F-6B3F-4945-8258-21F42BB656E0} = {337AAE03-4B57-435C-A88D-B35B1EB2709F}
 		{5545927E-47B8-414F-889D-0D2D0E25FFE2} = {337AAE03-4B57-435C-A88D-B35B1EB2709F}
 		{FFF07CED-6812-474B-9DED-D3807B10FCA2} = {337AAE03-4B57-435C-A88D-B35B1EB2709F}
+		{95FC66B6-0DA9-4E91-9560-B3130C0A3E70} = {F7762B28-E881-4BD6-BABB-0303DE2E3591}
+		{73E30968-FB1E-4A71-90D0-A10A73B480BB} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
+		{95341707-86F4-4049-99CB-CB1DF3DF6AD1} = {337AAE03-4B57-435C-A88D-B35B1EB2709F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AAC8C9B1-161C-4C87-B2CE-D7C53C230A5D}
