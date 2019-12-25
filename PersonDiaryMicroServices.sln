@@ -45,7 +45,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Person.WebApi",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infractructure.Settings", "src\infrastructure\PersonDiary.Infractructure.Settings\PersonDiary.Infractructure.Settings.csproj", "{95341707-86F4-4049-99CB-CB1DF3DF6AD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Infrastructure.ApiClient", "src\infrastructure\PersonDiary.Infrastructure.ApiClient\PersonDiary.Infrastructure.ApiClient.csproj", "{FE3BB106-7674-4F41-9030-39896DA2D763}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure.ApiClient", "src\infrastructure\PersonDiary.Infrastructure.ApiClient\PersonDiary.Infrastructure.ApiClient.csproj", "{FE3BB106-7674-4F41-9030-39896DA2D763}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.ConsulKeyValueSetterConsole", "src\PersonDiary.ConsulKeyValueSetter\PersonDiary.ConsulKeyValueSetterConsole.csproj", "{EE26D97A-472E-4577-81A6-239487954C2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Dto", "src\PersonDiary.Dto\PersonDiary.Dto.csproj", "{3BBEFD9C-3A74-4D59-B94B-D40544858DF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -125,6 +129,14 @@ Global
 		{FE3BB106-7674-4F41-9030-39896DA2D763}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE3BB106-7674-4F41-9030-39896DA2D763}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE3BB106-7674-4F41-9030-39896DA2D763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE26D97A-472E-4577-81A6-239487954C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE26D97A-472E-4577-81A6-239487954C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE26D97A-472E-4577-81A6-239487954C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE26D97A-472E-4577-81A6-239487954C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BBEFD9C-3A74-4D59-B94B-D40544858DF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BBEFD9C-3A74-4D59-B94B-D40544858DF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BBEFD9C-3A74-4D59-B94B-D40544858DF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BBEFD9C-3A74-4D59-B94B-D40544858DF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
