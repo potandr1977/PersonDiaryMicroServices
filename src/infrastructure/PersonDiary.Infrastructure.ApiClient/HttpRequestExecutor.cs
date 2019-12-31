@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,9 +14,7 @@ namespace PersonDiary.Infrastructure.HttpApiClient
     public class HttpRequestExecutor : IHttpRequestExecutor, IDisposable
     {
         private static readonly TimeSpan InfiniteTimeout = TimeSpan.FromMilliseconds(-1.0);
-
         private bool disposed;
-
         private HttpClient httpClient;
 
 

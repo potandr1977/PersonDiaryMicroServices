@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PersonDiary.Infrastructure.Consul
 {
-    public abstract class ConsulApiClient : BaseApiClient, IConsulApiClient
+    public class ConsulApiClient : BaseApiClient, IConsulApiClient
     {
-        private const string CONSUL_ENDPOINT_URL = "localhost:8500/v1/kv/";
+        private const string CONSUL_ENDPOINT_URL = "http://localhost:8500/v1/kv/";
 
         private const string CONSUL_SET_PERSONS_KEY_URL = "PDdev/Persons/url";
         private const string CONSUL_SET_PERSONS_KEY_VALUE = "http://localhost:49442";
@@ -16,7 +16,7 @@ namespace PersonDiary.Infrastructure.Consul
         private const string CONSUL_SET_LIFEEVENTS_KEY_URL = "PDdev/Lifeevents/url";
         private const string CONSUL_SET_LIFEEVENTS_KEY_VALUE = "http://localhost:65354";
         
-        protected ConsulApiClient
+        public ConsulApiClient
         (
             IHttpRequestExecutor httpRequestExecutor,
             IUriCreator uriCreator,
@@ -33,12 +33,12 @@ namespace PersonDiary.Infrastructure.Consul
 
         public Task SetPersonsValueAsync()
         {
-            return PostAsync($"{GetApiEndpoint()}{CONSUL_SET_PERSONS_KEY_URL}", CONSUL_SET_PERSONS_KEY_VALUE);
+            return PutAsync($"{CONSUL_SET_PERSONS_KEY_URL}", CONSUL_SET_PERSONS_KEY_VALUE);
         }
 
         public Task SetLifeeventsValueAsync()
         {
-            return PostAsync($"{GetApiEndpoint()}{CONSUL_SET_LIFEEVENTS_KEY_URL}", CONSUL_SET_LIFEEVENTS_KEY_VALUE);
+            return PutAsync($"{CONSUL_SET_LIFEEVENTS_KEY_URL}", CONSUL_SET_LIFEEVENTS_KEY_VALUE);
         }
 
         public Task<string> GetPersonsValueAsync()
