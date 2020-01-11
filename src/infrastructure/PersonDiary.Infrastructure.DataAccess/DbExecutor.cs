@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace PersonDiary.Infrastructure.DataAccess
 {
-    public abstract class DbExecutor:IDbExecutor
+    public abstract class DbExecutor : IDbExecutor
     {
         private readonly string connectionString;
+
+        public DbExecutor(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
         public async Task<List<T>> QueryAsync<T>(QueryObject queryObject, QuerySetting settings = null)
         {
             using (var cnn = new SqlConnection(connectionString))
@@ -20,9 +25,25 @@ namespace PersonDiary.Infrastructure.DataAccess
                     queryObject.QueryParams,
                     null,
                     null,
-                    queryObject.CommandType).ConfigureAwait(false);
+                    queryObject.CommandType);
 
                 return result.AsList();
+            }
+        }
+
+        public async Task ExecuteAsync(QueryObject queryObject)
+        {
+            using (var cnn = new SqlConnection(connectionString))
+            {
+                await cnn.OpenAsync().ConfigureAwait(false);
+
+                await cnn.ExecuteAsync(
+                    queryObject.Sql,
+                    queryObject.QueryParams,
+                    null,
+                    null,
+                    queryObject.CommandType);
+
             }
         }
     }

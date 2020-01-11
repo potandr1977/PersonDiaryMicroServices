@@ -9,5 +9,7 @@ namespace PersonDiary.Infrastucture.Domain.DataAccess
     public interface IDbExecutor
     {
         Task<List<T>> QueryAsync<T>(QueryObject queryObject, QuerySetting settings = null);
+
+        Task ExecuteAsync(QueryObject queryObject);
     }
 }
