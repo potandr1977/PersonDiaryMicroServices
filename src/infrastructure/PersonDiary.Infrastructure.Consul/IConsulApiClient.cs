@@ -7,12 +7,12 @@ namespace PersonDiary.Infrastructure.Consul
 {
     public interface IConsulApiClient
     {
-        Task SetPersonsValueAsync();
+        Task SetPersonsServiceUrlValueAsync();
 
-        Task SetLifeeventsValueAsync();
+        Task SetLifeEventsServiceUrlValueAsync();
 
-        Task<string> GetPersonsValueAsync();
+        Task<string> GetPersonsServiceUrlValueAsync();
 
-        Task<string> GetLifeeventsValueAsync();
+        Task<string> GetLifeEventsServiceUrlValueAsync();
     }
 }

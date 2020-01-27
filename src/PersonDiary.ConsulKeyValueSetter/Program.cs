@@ -13,7 +13,11 @@ namespace PersonDiary.ConsulKeyValueSetter
 {
     class Program
     {
-        
+        private const string ConsulSetPersonsKeyUrl = "PDdev/Persons/url";
+        private const string ConsulSetPersonsKeyValue = "http://localhost:49442";
+
+        private const string ConsulSetLifeEventsKeyUrl = "PDdev/Lifeevents/url";
+        private const string ConsulSetLifeEventsKeyValue = "http://localhost:65354";
         static void Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
@@ -34,10 +38,10 @@ namespace PersonDiary.ConsulKeyValueSetter
             logger.LogDebug("Starting application");
 
             var consulApiClient = serviceProvider.GetService<IConsulApiClient>();
-            var personTask = consulApiClient.SetPersonsValueAsync();
-            var lifeeventTask = consulApiClient.SetLifeeventsValueAsync();
+            var personTask = consulApiClient.SetPersonsServiceUrlValueAsync();
+            var lifeEventTask = consulApiClient.SetLifeEventsServiceUrlValueAsync();
 
-            var resultTask =  Task.WhenAll(personTask, lifeeventTask);
+            var resultTask =  Task.WhenAll(personTask, lifeEventTask);
             try
             {
                 resultTask.Wait();
@@ -50,7 +54,7 @@ namespace PersonDiary.ConsulKeyValueSetter
             if (personTask.Status == TaskStatus.RanToCompletion)
                 Console.WriteLine("Person service registered");
 
-            if (lifeeventTask.Status == TaskStatus.RanToCompletion)
+            if (lifeEventTask.Status == TaskStatus.RanToCompletion)
                 Console.WriteLine("lifeevent service registered");
 
             Console.WriteLine("Operation completed");

@@ -14,6 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\infrastructure\PersonDiary.Infractructure.Settings\PersonDiary.Infractructure.Settings.csproj" />
+    <ProjectReference Include="..\..\..\src\infrastructure\PersonDiary.Infrastructure.ApiClient\PersonDiary.Infrastructure.ApiClient.csproj" />
+    <ProjectReference Include="..\..\..\src\infrastructure\PersonDiary.Infrastructure.Consul\PersonDiary.Infrastructure.Consul.csproj" />
     <ProjectReference Include="..\..\..\src\infrastructure\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
   </ItemGroup>
 

@@ -13,8 +13,7 @@ namespace PersonDiary.Infrastructure.Consul
     public class ConsulCatalogWatcher : IConsulCatalogWatcher, IDisposable
     {
 
-        private static readonly TimeSpan InfiniteTimeout = TimeSpan.FromMilliseconds(-1.0);
-
+        private const int InfiniteTimeout = 10;//seconds
         private bool disposed;
         private readonly CancellationTokenSource cts = new CancellationTokenSource();
         private readonly object catalogLockObj = new object();
@@ -28,9 +27,8 @@ namespace PersonDiary.Infrastructure.Consul
 
         public Task CheckOptionsAsync(Action<IReadOnlyCollection<KeyValuePair<string, string>>> onChange)
         {
-            keyPath = FormValidKey(keyPath);
             var cancellationToken = cts.Token;
-            var tcsInited = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+            var tcsInitiated = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
 
             lock (catalogLockObj)
             {
@@ -40,49 +38,41 @@ namespace PersonDiary.Infrastructure.Consul
 
                     watchCatalogLoopTaskList.Add(Task.Factory.StartNew(async () =>
                     {
-                        long currentIndex = 0;
-
                         while (cancellationToken.IsCancellationRequested == false)
                         {
                             try
                             {
-                                var url =
-                                    $"http://{consulServiceAddress.Address}:{consulServiceAddress.Port}/v1/kv/{keyPath}?recurse&wait=10s&index={currentIndex}";
-
-                                using (var response = await httpClient.GetAsync(url).ConfigureAwait(false))
+                                var lifeEventsServiceUrlValue = await consulApiClient.GetLifeEventsServiceUrlValueAsync();
+                                var personsServiceUrlValue = await consulApiClient.GetPersonsServiceUrlValueAsync();
+                                
+                                var dictionary = new Dictionary<string,string>()
                                 {
-                                    var index = TryGetConsulIndex(response);
-
-                                    if ((response.IsSuccessStatusCode == false && response.StatusCode != HttpStatusCode.NotFound) || currentIndex == index)
-                                    {
-                                        continue;
-                                    }
-
-                                    currentIndex = index;
-                                    var dictionary = await BuildCollectionAsync(keyPath, response).ConfigureAwait(false);
-                                    onChange(dictionary);
-                                    tcsInited.TrySetResult(true);
-                                }
+                                    {"lifeEventsServiceUrl",lifeEventsServiceUrlValue},
+                                    {"personsServiceUrl",personsServiceUrlValue},
+                                };
+                                
+                                onChange(dictionary);
+                                tcsInitiated.TrySetResult(true);
                             }
                             catch
                             {
                                 //ignore
                             }
 
-                            await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+                            await Task.Delay(TimeSpan.FromSeconds(InfiniteTimeout)).ConfigureAwait(false);
                         }
 
-                        tcsInited.TrySetResult(true);
+                        tcsInitiated.TrySetResult(true);
 
                     }, TaskCreationOptions.LongRunning).Unwrap());
                 }
                 catch (ObjectDisposedException)
                 {
-                    tcsInited.TrySetCanceled();
+                    tcsInitiated.TrySetCanceled();
                 }
             }
 
-            return tcsInited.Task;
+            return tcsInitiated.Task;
         }
 
         public void Dispose()
@@ -91,33 +81,7 @@ namespace PersonDiary.Infrastructure.Consul
             GC.SuppressFinalize(this);
         }
 
-        private static async Task<IReadOnlyCollection<KeyValuePair<string, string>>> BuildCollectionAsync(string keyPath, HttpResponseMessage response)
-        {
-            if (response.IsSuccessStatusCode == false)
-            {
-                return null;
-            }
-
-            var kvs = await ReadKeysAsync(response).ConfigureAwait(false);
-
-            if (kvs == null || kvs.Length == 0)
-            {
-                return null;
-            }
-
-            var collection = new List<KeyValuePair<string, string>>(kvs.Length);
-
-            for (var index = 0; index < kvs.Length; index++)
-            {
-                var kv = kvs[index];
-                var key = kv.Key.Substring(keyPath.Length).Replace(ConsulPath[0], CorePath);
-                var value = kv.Value == null ? null : Encoding.UTF8.GetString(Convert.FromBase64String(kv.Value));
-                collection.Add(new KeyValuePair<string, string>(key, value));
-            }
-
-            return collection;
-        }
-
+        /*
         private static async Task<KeyValue[]> ReadKeysAsync(HttpResponseMessage response)
         {
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -147,6 +111,7 @@ namespace PersonDiary.Infrastructure.Consul
 
             return index;
         }
+        */
 
         private void Dispose(bool disposing)
         {

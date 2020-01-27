@@ -4,6 +4,7 @@ using PersonDiary.Infrastructure.Domain.Consul;
 using PersonDiary.Infrastructure.Domain.Settings;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PersonDiary.Infractructure.Settings
@@ -27,11 +28,9 @@ namespace PersonDiary.Infractructure.Settings
             return Task.FromResult(settings[name]);
         }
 
-        private void OnSettingsChange(IReadOnlyCollection<KeyValuePair<string, string>> settings)
+        private void OnSettingsChange(IReadOnlyCollection<KeyValuePair<string, string>> settingsCollection)
         {
-            var settingsDictionary = JsonConvert.DeserializeObject<Dictionary<string,string>>(
-                File.ReadAllText($"{hostingEnvironment.ContentRootPath}\\movie.json"));
-
+            this.settings = settingsCollection.ToDictionary(pair=>pair.Key, pair=>pair.Value);
         }
     }
 }

@@ -31,22 +31,22 @@ namespace PersonDiary.Infrastructure.Consul
             return CONSUL_ENDPOINT_URL;
         }
 
-        public Task SetPersonsValueAsync()
+        public Task SetPersonsServiceUrlValueAsync()
         {
             return PutAsync($"{CONSUL_SET_PERSONS_KEY_URL}", CONSUL_SET_PERSONS_KEY_VALUE);
         }
 
-        public Task SetLifeeventsValueAsync()
+        public Task SetLifeEventsServiceUrlValueAsync()
         {
             return PutAsync($"{CONSUL_SET_LIFEEVENTS_KEY_URL}", CONSUL_SET_LIFEEVENTS_KEY_VALUE);
         }
 
-        public Task<string> GetPersonsValueAsync()
+        public Task<string> GetPersonsServiceUrlValueAsync()
         {
             return GetAsync<string>($"{GetApiEndpoint()}{CONSUL_SET_PERSONS_KEY_URL}");
         }
 
-        public Task<string> GetLifeeventsValueAsync()
+        public Task<string> GetLifeEventsServiceUrlValueAsync()
         {
             return GetAsync<string>($"{GetApiEndpoint()}{CONSUL_SET_LIFEEVENTS_KEY_URL}");
         }
