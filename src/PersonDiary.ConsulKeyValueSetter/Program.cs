@@ -18,7 +18,8 @@ namespace PersonDiary.ConsulKeyValueSetter
 
         private const string ConsulSetLifeEventsKeyUrl = "PDdev/Lifeevents/url";
         private const string ConsulSetLifeEventsKeyValue = "http://localhost:65354";
-        static void Main(string[] args)
+
+        private static async Task Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
                 .AddLogging()
@@ -41,23 +42,21 @@ namespace PersonDiary.ConsulKeyValueSetter
             var personTask = consulApiClient.SetPersonsServiceUrlValueAsync();
             var lifeEventTask = consulApiClient.SetLifeEventsServiceUrlValueAsync();
 
-            var resultTask =  Task.WhenAll(personTask, lifeEventTask);
-            try
-            {
-                resultTask.Wait();
-            }
-            catch(Exception ex) 
-            { 
-                logger.LogTrace(ex.Message); 
-            };
+            await Task.WhenAll(personTask, lifeEventTask);
 
             if (personTask.Status == TaskStatus.RanToCompletion)
-                Console.WriteLine("Person service registered");
+                Console.WriteLine("Person service url registered");
 
             if (lifeEventTask.Status == TaskStatus.RanToCompletion)
-                Console.WriteLine("lifeevent service registered");
+                Console.WriteLine("LifeEvent service url registered");
 
-            Console.WriteLine("Operation completed");
+            Console.WriteLine("Values has been set");
+
+            var lifeEventsServiceUrlValueTask = consulApiClient.GetLifeEventsServiceUrlValueAsync();
+            var personsServiceUrlValueTask = consulApiClient.GetPersonsServiceUrlValueAsync();
+            var rt = await Task.WhenAll(lifeEventsServiceUrlValueTask, personsServiceUrlValueTask);
+           
+            Console.WriteLine($"lev {lifeEventsServiceUrlValueTask.Result} per {personsServiceUrlValueTask.Result}");
             Console.ReadLine();
         }
     }

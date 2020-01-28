@@ -42,13 +42,13 @@ namespace PersonDiary.Infrastructure.Consul
         }
 
         public Task<string> GetPersonsServiceUrlValueAsync()
-        {
-            return GetAsync<string>($"{GetApiEndpoint()}{CONSUL_SET_PERSONS_KEY_URL}");
+        { 
+            return GetAsync<string>($"{CONSUL_SET_PERSONS_KEY_URL}?raw");
         }
 
         public Task<string> GetLifeEventsServiceUrlValueAsync()
         {
-            return GetAsync<string>($"{GetApiEndpoint()}{CONSUL_SET_LIFEEVENTS_KEY_URL}");
+            return GetAsync<string>($"{CONSUL_SET_LIFEEVENTS_KEY_URL}?raw");
         }
     }
 }
