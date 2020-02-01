@@ -20,7 +20,7 @@ namespace PersonDiary.Infractructure.Settings
             this.consulCatalogWatcher = consulCatalogWatcher;
             this.hostingEnvironment = hostingEnvironment;
 
-            this.consulCatalogWatcher.CheckOptionsAsync(OnSettingsChange);
+            this.consulCatalogWatcher.CheckSettingsAsync(OnSettingsChange);
         }
 
         public Task<string> Get(string name)

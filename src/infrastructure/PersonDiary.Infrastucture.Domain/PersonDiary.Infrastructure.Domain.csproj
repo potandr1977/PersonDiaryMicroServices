@@ -5,12 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="EventBus\" />
-    <Folder Include="Cache\" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.0" />
+    <Folder Include="EventBus\Events" />
   </ItemGroup>
 
 </Project>
