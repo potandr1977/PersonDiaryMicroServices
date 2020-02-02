@@ -2,7 +2,7 @@
 
 namespace PersonDiary.Infrastructure.Domain.EventBus
 {
-    public interface IPublisher<in T>
+    public interface IPublisher<T>
     {
         Task PublishEventAsync(T publishedEvent);
     }

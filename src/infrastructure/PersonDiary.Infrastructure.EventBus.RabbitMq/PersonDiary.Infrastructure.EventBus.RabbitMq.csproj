@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyNetQ" Version="3.7.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.0.0-rc1" />
+  </ItemGroup>
+
 </Project>

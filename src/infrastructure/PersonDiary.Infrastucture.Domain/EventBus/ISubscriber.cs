@@ -5,6 +5,6 @@ namespace PersonDiary.Infrastructure.Domain.EventBus
 {
     public interface ISubscriber<out T>
     {
-        Task SubscribeAsync(Action<T> handler); 
+        void Subscribe(Action<T> handler); 
     }
 }
