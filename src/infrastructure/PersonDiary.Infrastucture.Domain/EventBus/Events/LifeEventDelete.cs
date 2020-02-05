@@ -2,6 +2,6 @@
 {
     public class LifeEventDelete
     {
-        
+        public int Id { get; set; }
     }
 }

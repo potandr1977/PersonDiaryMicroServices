@@ -2,6 +2,6 @@
 {
     public class PersonUpdate
     {
-        
+        public int Id { get; set; }
     }
 }

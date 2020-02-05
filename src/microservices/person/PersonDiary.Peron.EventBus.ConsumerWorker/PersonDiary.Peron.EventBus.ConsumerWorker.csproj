@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>dotnet-PersonDiary.Peron.EventBus.ConsumerWorker-C06654CB-7B4F-49C6-AFF7-10BC5586744C</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="EasyNetQ" Version="3.7.1" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0" />
+    </ItemGroup>
+</Project>

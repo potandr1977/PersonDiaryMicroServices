@@ -2,6 +2,6 @@
 {
     public class PersonDelete
     {
-        
+        public int Id { get; set; }
     }
 }

@@ -2,6 +2,6 @@
 {
     public class LifeEventUpdate
     {
-        
+        public int Id { get; set; }
     }
 }

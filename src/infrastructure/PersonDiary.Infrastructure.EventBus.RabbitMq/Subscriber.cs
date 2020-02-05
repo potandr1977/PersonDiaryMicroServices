@@ -4,22 +4,23 @@ using PersonDiary.Infrastructure.Domain.EventBus;
 
 namespace PersonDiary.Infrastructure.EventBus.RabbitMq
 {
-    public abstract class Subscriber<T> : ISubscriber<T> where T : class
+    public class Subscriber<T> : ISubscriber<T> where T : class
     {
         private readonly string rabbitConnectionString;
         private readonly string topic;
         private readonly string subscriptionId;
+        private readonly IBus bus;
 
-        protected Subscriber(string rabbitConnectionString, string topic, string subscriptionId)
+        public Subscriber(string rabbitConnectionString, string topic, string subscriptionId)
         {
             this.rabbitConnectionString = rabbitConnectionString;
             this.topic = topic;
             this.subscriptionId = subscriptionId;
+            this.bus = RabbitHutch.CreateBus(rabbitConnectionString);
         }
 
         public void Subscribe(Action<T> handler)
         {
-            using var bus = RabbitHutch.CreateBus(rabbitConnectionString);
             bus.Subscribe<T>(subscriptionId, handler, x => x.WithTopic(topic));
         }
     }

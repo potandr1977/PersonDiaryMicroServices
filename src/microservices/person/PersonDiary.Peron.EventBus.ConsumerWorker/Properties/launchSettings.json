@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "PersonDiary.Peron.EventBus.ConsumerWorker": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
