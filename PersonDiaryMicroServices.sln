@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.WebClient", "src\PersonDiary.WebClient\PersonDiary.WebClient.csproj", "{1FB51362-9D76-46EB-B4E3-FA710A59C699}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.GateWay", "src\PersonDiary.GateWay\PersonDiary.GateWay.csproj", "{2AF853C4-F092-470B-BBC1-F8B782EE1F95}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "microservices", "microservices", "{28629E89-5DEE-4CF8-BD68-E5E128F8796A}"
@@ -22,8 +20,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.Dto", "src\microservices\lifeevent\PersonDiary.Lifeevent.Dto\PersonDiary.Lifeevent.Dto.csproj", "{E666ED36-3CF0-4210-848B-2588F3A4CEB2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.EventBus", "src\microservices\lifeevent\PersonDiary.Lifeevent.EventBus\PersonDiary.Lifeevent.EventBus.csproj", "{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.RabbitConsumerWorker", "src\PersonDiary.RabbitConsumerWorker\PersonDiary.RabbitConsumerWorker.csproj", "{A1A5F75C-54E9-437F-BAA2-2C765EA8BD44}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{337AAE03-4B57-435C-A88D-B35B1EB2709F}"
 EndProject
@@ -51,17 +47,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.ConsulKeyValueS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Dto", "src\PersonDiary.Dto\PersonDiary.Dto.csproj", "{3BBEFD9C-3A74-4D59-B94B-D40544858DF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Test", "tests\PersonDiary.Test\PersonDiary.Test\PersonDiary.Test.csproj", "{C7D15EE8-5249-4808-AF3D-920C83827081}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Test", "tests\PersonDiary.Test\PersonDiary.Test\PersonDiary.Test.csproj", "{C7D15EE8-5249-4808-AF3D-920C83827081}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Lifeevent.EventBus.ConsumerWorker", "src\microservices\lifeevent\PersonDiary.Lifeevent.EventBus.ConsumerWorker\PersonDiary.Lifeevent.EventBus.ConsumerWorker.csproj", "{519DAFF8-0028-495A-BA35-BAD9F7CB507C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.EventBus.ConsumerWorker", "src\microservices\lifeevent\PersonDiary.Lifeevent.EventBus.ConsumerWorker\PersonDiary.Lifeevent.EventBus.ConsumerWorker.csproj", "{519DAFF8-0028-495A-BA35-BAD9F7CB507C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Peron.EventBus.ConsumerWorker", "src\microservices\person\PersonDiary.Peron.EventBus.ConsumerWorker\PersonDiary.Peron.EventBus.ConsumerWorker.csproj", "{101C7C6C-D59C-42EB-A272-602095A42579}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Peron.EventBus.ConsumerWorker", "src\microservices\person\PersonDiary.Peron.EventBus.ConsumerWorker\PersonDiary.Peron.EventBus.ConsumerWorker.csproj", "{101C7C6C-D59C-42EB-A272-602095A42579}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Person.EventBus", "src\microservices\person\PersonDiary.Person.EventBus\PersonDiary.Person.EventBus.csproj", "{A8B6110A-7E8D-45D2-B4AA-3701CE3795A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Person.EventBus", "src\microservices\person\PersonDiary.Person.EventBus\PersonDiary.Person.EventBus.csproj", "{A8B6110A-7E8D-45D2-B4AA-3701CE3795A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Test.RabbitMq.Emitter", "tests\PersonDiary.Test.RabbitMq.Emitter\PersonDiary.Test.RabbitMq.Emitter.csproj", "{81074CDC-F494-4AD2-B08C-A20AEBF88C49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Test.RabbitMq.Emitter", "tests\PersonDiary.Test.RabbitMq.Emitter\PersonDiary.Test.RabbitMq.Emitter.csproj", "{81074CDC-F494-4AD2-B08C-A20AEBF88C49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Test.RabbitMq.Receiver", "tests\PersonDiary.Test.RabbitMq.Receiver\PersonDiary.Test.RabbitMq.Receiver.csproj", "{A80F659A-9CAC-448F-8319-82AC53D64F51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Test.RabbitMq.Receiver", "tests\PersonDiary.Test.RabbitMq.Receiver\PersonDiary.Test.RabbitMq.Receiver.csproj", "{A80F659A-9CAC-448F-8319-82AC53D64F51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,10 +65,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1FB51362-9D76-46EB-B4E3-FA710A59C699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1FB51362-9D76-46EB-B4E3-FA710A59C699}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1FB51362-9D76-46EB-B4E3-FA710A59C699}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1FB51362-9D76-46EB-B4E3-FA710A59C699}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2AF853C4-F092-470B-BBC1-F8B782EE1F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2AF853C4-F092-470B-BBC1-F8B782EE1F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AF853C4-F092-470B-BBC1-F8B782EE1F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -97,10 +89,6 @@ Global
 		{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE98BB86-FE19-47BA-8C7D-DC2C43CE432D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1A5F75C-54E9-437F-BAA2-2C765EA8BD44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1A5F75C-54E9-437F-BAA2-2C765EA8BD44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1A5F75C-54E9-437F-BAA2-2C765EA8BD44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1A5F75C-54E9-437F-BAA2-2C765EA8BD44}.Release|Any CPU.Build.0 = Release|Any CPU
 		{657B88A4-43C9-4E20-B282-080EDEF83CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{657B88A4-43C9-4E20-B282-080EDEF83CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{657B88A4-43C9-4E20-B282-080EDEF83CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -8,4 +8,9 @@
     <PackageReference Include="EasyNetQ" Version="3.7.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="LifeEvent\" />
+    <Folder Include="Person\" />
+  </ItemGroup>
+
 </Project>
