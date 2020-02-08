@@ -1,59 +1,61 @@
-﻿using AutoMapper;
+﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using PersonDiary.BusinessLogic;
-using PersonDiary.Contracts.PersonContract;
-using PersonDiary.Interfaces;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using PersonDiary.GateWay.ApiClient;
+using PersonDiary.GateWay.Dto;
+using PersonDiary.GateWay.Mappers;
+using PersonDiary.Person.Dto;
 
-namespace PersonDiary.React.EFCore.Controllers
+namespace PersonDiary.GateWay.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private readonly IUnitOfWorkFactory factory;
-        private readonly IMapper mapper;
-        //Впрыскиваем зависимости фабрики объектов уровня доступа к данным для впрыска в модель и маппера контрактов
-        public PersonController(IUnitOfWorkFactory factory, IMapper mapper)
+        private readonly IPersonApiClient personApiClient;
+        public PersonController(IPersonApiClient personApiClient)
         {
-            this.factory = factory;
-            this.mapper = mapper;
+            this.personApiClient = personApiClient;
         }
-        // Выборка списка персон постранично
-        // GET: api/Person
+        
         [HttpGet]
-        public async Task<GetPersonListResponse> Get(string json)
+        public async Task<ActionResult> Get(string json)
         {
-            return await new PersonModel(factory, mapper).GetItemsAsync(JsonConvert.DeserializeObject<GetPersonListRequest>(json));
+            var gateWayGetPersonsDto = JsonConvert.DeserializeObject<GateWayGetPersonsDto>(json);
+            var getPersonDto = Mapper.GateWayGetPersonsDtoToPersonDto(gateWayGetPersonsDto);
+            var result = await personApiClient.GetPersons(getPersonDto);
+            return Ok(result);
+            //return await new PersonModel(factory, mapper).GetItemsAsync(JsonConvert.DeserializeObject<GetPersonListRequest>(json));
+            //return Ok(answer);
         }
-        // Выборка данных персоны
-        // GET: api/Person/5
+        
         [HttpGet("{id}")]
-        public async Task<GetPersonResponse> Get(int id)
+        public Task<ActionResult> Get(GetPersonRequestDto getPersonRequestDto)
         {
-            return await new PersonModel(factory, mapper).GetItemAsync(new GetPersonRequest() { Id = id, withLifeEvents = true });
+            throw new NotImplementedException();
+            //return Ok(answer);
         }
-        //Создание персоны
-        // POST: api/Person
+        
         [HttpPost]
-        public async Task<UpdatePersonResponse> Post([FromBody]  UpdatePersonRequest request)
+        public Task<ActionResult> Post([FromBody]  UpdatePersonRequestDto request)
         {
-            return await new PersonModel(factory, mapper).CreateAsync(request);
+            throw new NotImplementedException();
+            //return Ok(answer);
         }
-        //Обновление персоны
-        // PUT: api/Person/5
-        [HttpPut("{id}")]
-        public async Task<UpdatePersonResponse> Put(int id, [FromBody] UpdatePersonRequest request)
+        
+        [HttpPut]
+        public Task<ActionResult> Put([FromBody] UpdatePersonRequestDto request)
         {
-            return await new PersonModel(factory, mapper).UpdateAsync(request);
+            throw new NotImplementedException();
+            //return Ok(answer);
         }
-        //Удаление персоны
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public async Task<DeletePersonResponse> Delete(int id)
+        
+        [HttpDelete]
+        public Task<ActionResult> Delete(DeletePersonRequestDto deletePersonRequestDto)
         {
-            return await new PersonModel(factory, mapper).DeleteAsync(new DeletePersonRequest() { Id = id });
+            throw new NotImplementedException();
+            //return Ok(answer);
         }
 
     }

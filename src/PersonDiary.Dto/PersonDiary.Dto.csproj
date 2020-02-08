@@ -9,7 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="LifeEvent" />
     <Folder Include="LifeEvent\" />
+    <Folder Include="Person" />
     <Folder Include="Person\" />
   </ItemGroup>
 

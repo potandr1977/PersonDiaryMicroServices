@@ -6,6 +6,6 @@ namespace PersonDiary.Infrastructure.Domain.Consul
 {
     public interface IConsulCatalogWatcher
     {
-        Task CheckSettingsAsync(Action<IReadOnlyDictionary<string,string>> onChange);
+        Task CheckSettingsAsync(Action<IReadOnlyCollection<KeyValuePair<string, string>>> onChange);
     }
 }

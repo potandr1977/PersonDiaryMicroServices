@@ -6,6 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="EasyNetQ" Version="3.7.1" />
+    <PackageReference Include="StackExchange.Redis" Version="2.1.0-preview.23" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
   </ItemGroup>
 
 </Project>

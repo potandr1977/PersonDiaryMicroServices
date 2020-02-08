@@ -4,10 +4,9 @@ using System;
 using System.Threading.Tasks;
 using PersonDiary.Person.Dto;
 
-namespace PersonDiary.GateWay.Controllers
+namespace PersonDiary.Person.WebApi.Controllers
 {
-    
-        [Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class PersonFileController : ControllerBase
     {

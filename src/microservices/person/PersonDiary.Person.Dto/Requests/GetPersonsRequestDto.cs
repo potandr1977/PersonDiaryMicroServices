@@ -1,8 +1,9 @@
-﻿namespace PersonDiary.Contracts.PersonContract
+﻿namespace PersonDiary.Person.Dto
 {
-    public class GetPersonListRequest : Request
+    public class GetPersonsRequestDto 
     {
         public int PageNo { get; set; }
+        
         public int PageSize { get; set; }
     }
 }

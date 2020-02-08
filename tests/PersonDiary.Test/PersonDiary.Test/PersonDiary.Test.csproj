@@ -20,6 +20,7 @@
     <ProjectReference Include="..\..\..\src\infrastructure\PersonDiary.Infrastructure.Consul\PersonDiary.Infrastructure.Consul.csproj" />
     <ProjectReference Include="..\..\..\src\infrastructure\PersonDiary.Infrastructure.EventBus.RabbitMq\PersonDiary.Infrastructure.EventBus.RabbitMq.csproj" />
     <ProjectReference Include="..\..\..\src\infrastructure\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
+    <ProjectReference Include="..\..\..\src\PersonDiary.GateWay.ApiClient\PersonDiary.GateWay.ApiClient.csproj" />
   </ItemGroup>
 
 </Project>

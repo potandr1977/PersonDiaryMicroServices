@@ -7,6 +7,6 @@ namespace PersonDiary.Infrastructure.Domain.Settings
 {
     public interface ISettingsRepository
     {
-        Task<string> Get(string name);
+        string Get(string name);
     }
 }

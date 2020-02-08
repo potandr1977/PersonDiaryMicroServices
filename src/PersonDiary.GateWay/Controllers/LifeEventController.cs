@@ -1,26 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using PersonDiary.GateWay.Dto;
 
 
-namespace PersonDiary.React.EFCore.Controllers
+namespace PersonDiary.GateWay.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class LifeEventController : ControllerBase
     {
-        
-        //Впрыскиваем зависимости объектов уровня доступа к данным для впрыска в модель
         public LifeEventController()
         {
             
         }
         // GET: api/LifeEvent
         [HttpGet]
-        public async Task<GetLifeEventListResponse> Get(string json)
+        public Task<IActionResult> Get(string json)
         {
-
-            var resp = await new LifeEventModel(factory, mapper).GetItemsAsync(JsonConvert.DeserializeObject<GetLifeEventListRequest>(json));
+            throw new NotImplementedException();
+            /*
+            var resp = await new LifeEventModel(factory, mapper).GetItemsAsync(JsonConvert.DeserializeObject<GetLifeEventListRequestDto>(json));
             if (!Parallel.ForEach(resp.LifeEvents, l =>
                     {
                         var responsePerson = new PersonModel(factory, mapper).GetItem(
@@ -32,35 +33,41 @@ namespace PersonDiary.React.EFCore.Controllers
             ) resp.AddMessage(new Contracts.Message("Person full name was not loaded"));
 
             return resp;
+            */
         }
 
 
         // GET: api/LifeEvent/5
         [HttpGet("{id}")]
-        public async Task<GetLifeEventResponse> Get(int id)
+        public Task<IActionResult> Get(int id)
         {
-            return await new LifeEventModel(factory, mapper).GetItemAsync(new GetLifeEventRequest() { Id = id });
+            throw new NotImplementedException();
+            //return await new LifeEventModel(factory, mapper).GetItemAsync(new GetLifeEventRequest() { Id = id });
+            //return new JsonResult(answer);
         }
 
         // POST: api/LifeEvent
         [HttpPost]
-        public async Task<UpdateLifeEventResponse> Post([FromBody]  UpdateLifeEventRequest request)
+        public Task<IActionResult> Post([FromBody]  GateWayUpdateLifeEventDto request)
         {
-            return await new LifeEventModel(factory, mapper).CreateAsync(request);
+            throw new NotImplementedException();
+            //return await new LifeEventModel(factory, mapper).CreateAsync(request);
         }
 
         // PUT: api/LifeEvent/5
         [HttpPut("{id}")]
-        public async Task<UpdateLifeEventResponse> Put(int id, [FromBody] UpdateLifeEventRequest request)
+        public Task<IActionResult> Put(int id, [FromBody] GateWayUpdateLifeEventDto request)
         {
-            return await new LifeEventModel(factory, mapper).UpdateAsync(request);
+            throw new NotImplementedException();
+            //return await new LifeEventModel(factory, mapper).UpdateAsync(request);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public async Task<DeleteLifeEventResponse> Delete(int id)
+        public Task<IActionResult> Delete(int id)
         {
-            return await new LifeEventModel(factory, mapper).DeleteAsync(new DeleteLifeEventRequest() { Id = id });
+            throw new NotImplementedException();
+            //return await new LifeEventModel(factory, mapper).DeleteAsync(new DeleteLifeEventRequest() { Id = id });
         }
     }
 }

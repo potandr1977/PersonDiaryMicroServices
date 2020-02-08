@@ -8,5 +8,9 @@
     <PackageReference Include="EasyNetQ" Version="3.7.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PersonDiary.Lifeevent.Dto\PersonDiary.Lifeevent.Dto.csproj" />
+  </ItemGroup>
+
 
 </Project>
