@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\infrastructure\PersonDiary.Infrastructure.Consul\PersonDiary.Infrastructure.Consul.csproj" />
+      <ProjectReference Include="..\infrastructure\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
+      <ProjectReference Include="..\microservices\person\PersonDiary.Person.Dto\PersonDiary.Person.Dto.csproj" />
+      <ProjectReference Include="..\PersonDiary.Dto\PersonDiary.Dto.csproj" />
+      <ProjectReference Include="..\PersonDiary.GateWay.Dto\PersonDiary.GateWay.Dto.csproj" />
+    </ItemGroup>
+
+</Project>
