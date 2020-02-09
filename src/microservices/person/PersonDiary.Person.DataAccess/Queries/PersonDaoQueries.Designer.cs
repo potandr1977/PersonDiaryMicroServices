@@ -59,5 +59,72 @@ namespace PersonDiary.Person.DataAccess.Queries {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to delete from dbo.Persons where Id = @Id;.
+        /// </summary>
+        internal static string DeleteById {
+            get {
+                return ResourceManager.GetString("DeleteById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select
+        ///	p.Id    &apos;Id&apos;,
+        ///	p.Name    &apos;Name&apos;,
+        ///	p.SurName	&apos;SurName&apos;,
+        ///	p.HasFile	&apos;HasFile&apos;
+        ///	from dbo.Persons p
+        ///.
+        /// </summary>
+        internal static string GetAll {
+            get {
+                return ResourceManager.GetString("GetAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select
+        ///	p.Id    &apos;Id&apos;,
+        ///	p.Name    &apos;Name&apos;,
+        ///	p.SurName	&apos;SurName&apos;,
+        ///	p.HasFile	&apos;HasFile&apos;
+        ///	from dbo.Persons p
+        ///	where df.Id = @Id;.
+        /// </summary>
+        internal static string GetById {
+            get {
+                return ResourceManager.GetString("GetById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to merge dbo.Persons as p
+        ///using
+        ///	(select
+        ///		@Id,
+        ///		@Name,
+        ///		@SurName,
+        ///		@HasFile
+        ///		) as ins (Id,Name,SurName,HasFile)
+        ///on (p.id = ins.id)
+        ///when matched then update set
+        ///					Id = ins.Id,
+        ///					Name = ins.Name,
+        ///					SurName = ins.SurName
+        ///when not matched then insert (Name,SurName,HasFile)
+        ///					values
+        ///						(ins.Id,
+        ///						ins.Name,
+        ///						ins.SurName,
+        ///						ins.HasFile
+        ///						);.
+        /// </summary>
+        internal static string SaveOrUpdate {
+            get {
+                return ResourceManager.GetString("SaveOrUpdate", resourceCulture);
+            }
+        }
     }
 }

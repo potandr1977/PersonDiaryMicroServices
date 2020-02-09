@@ -13,12 +13,6 @@ namespace PersonDiary.ConsulKeyValueSetter
 {
     class Program
     {
-        private const string ConsulSetPersonsKeyUrl = "PDdev/Persons/url";
-        private const string ConsulSetPersonsKeyValue = "http://localhost:49442";
-
-        private const string ConsulSetLifeEventsKeyUrl = "PDdev/Lifeevents/url";
-        private const string ConsulSetLifeEventsKeyValue = "http://localhost:65354";
-
         private static async Task Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
@@ -39,24 +33,28 @@ namespace PersonDiary.ConsulKeyValueSetter
             logger.LogDebug("Starting application");
 
             var consulApiClient = serviceProvider.GetService<IConsulApiClient>();
+            
             var personTask = consulApiClient.SetPersonsServiceUrlValueAsync();
             var lifeEventTask = consulApiClient.SetLifeEventsServiceUrlValueAsync();
 
-            await Task.WhenAll(personTask, lifeEventTask);
+            var personConnectionStringTask = consulApiClient.SetPersonServiceConnectionStringAsync();
+            var lifeConnectionStringEventTask = consulApiClient.SetLifeEventServiceConnectionStringAsync();
+
+            await Task.WhenAll(personTask, lifeEventTask,personConnectionStringTask,lifeConnectionStringEventTask);
 
             if (personTask.Status == TaskStatus.RanToCompletion)
                 Console.WriteLine("Person service url registered");
 
             if (lifeEventTask.Status == TaskStatus.RanToCompletion)
                 Console.WriteLine("LifeEvent service url registered");
+            
+            if (personConnectionStringTask.Status == TaskStatus.RanToCompletion)
+                Console.WriteLine("Person service connection string registered");
+
+            if (lifeConnectionStringEventTask.Status == TaskStatus.RanToCompletion)
+                Console.WriteLine("LifeEvent service connection string registered");
 
             Console.WriteLine("Values has been set");
-
-            var lifeEventsServiceUrlValueTask = consulApiClient.GetLifeEventsServiceUrlValueAsync();
-            var personsServiceUrlValueTask = consulApiClient.GetPersonsServiceUrlValueAsync();
-            var rt = await Task.WhenAll(lifeEventsServiceUrlValueTask, personsServiceUrlValueTask);
-           
-            Console.WriteLine($"lev {lifeEventsServiceUrlValueTask.Result} per {personsServiceUrlValueTask.Result}");
             Console.ReadLine();
         }
     }

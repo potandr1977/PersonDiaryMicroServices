@@ -4,6 +4,7 @@ using Dapper;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using PersonDiary.Infrastructure.Consul;
 using PersonDiary.Infrastructure.Domain.Settings;
 
 namespace PersonDiary.Infrastructure.DataAccess
@@ -14,7 +15,7 @@ namespace PersonDiary.Infrastructure.DataAccess
 
         public DbExecutor(ISettingsRepository settingsRepository)
         {
-            this.connectionString = connectionString;
+            this.connectionString = settingsRepository.Get(SettingKeys.ConnectionString);
         }
         public async Task<List<T>> QueryAsync<T>(QueryObject queryObject, QuerySetting settings = null)
         {

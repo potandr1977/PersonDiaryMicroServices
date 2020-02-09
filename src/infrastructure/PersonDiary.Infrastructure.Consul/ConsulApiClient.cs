@@ -16,6 +16,12 @@ namespace PersonDiary.Infrastructure.Consul
         private const string ConsulSetLifeeventsKeyUrl = "PDdev/Lifeevents/url";
         private const string ConsulSetLifeeventsKeyValue = "http://localhost:65354";
         
+        private const string ConsulSetLifeEventConnectionStringUrl = "PDdev/Lifeevents/ConnectionString";
+        private const string ConsulSetLifeEventConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=LifeEvents;Integrated Security=True";
+        
+        private const string ConsulSetPersonsConnectionStringUrl = "PDdev/Persons/ConnectionString";
+        private const string ConsulSetPersonsConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=Persons;Integrated Security=True";
+        
         public ConsulApiClient
         (
             IHttpRequestExecutor httpRequestExecutor,
@@ -40,7 +46,7 @@ namespace PersonDiary.Infrastructure.Consul
         {
             return PutAsync($"{ConsulSetLifeeventsKeyUrl}", ConsulSetLifeeventsKeyValue);
         }
-
+       
         public Task<string> GetPersonsServiceUrlValueAsync()
         { 
             return GetAsync<string>($"{ConsulSetPersonsKeyUrl}?raw");
@@ -49,6 +55,25 @@ namespace PersonDiary.Infrastructure.Consul
         public Task<string> GetLifeEventsServiceUrlValueAsync()
         {
             return GetAsync<string>($"{ConsulSetLifeeventsKeyUrl}?raw");
+        }
+        
+        public Task SetPersonServiceConnectionStringAsync()
+        {
+            return PutAsync($"{ConsulSetPersonsConnectionStringUrl}", ConsulSetPersonsConnectionStringValue);
+        }
+        public Task SetLifeEventServiceConnectionStringAsync()
+        {
+            return PutAsync($"{ConsulSetLifeEventConnectionStringUrl}", ConsulSetLifeEventConnectionStringValue);
+        }
+        
+        public Task<string> GetLifeEventsServiceConnectionStringAsync()
+        {
+            return GetAsync<string>($"{ConsulSetLifeEventConnectionStringUrl}?raw");
+        }
+        
+        public Task<string> GetPersonsServiceConnectionStringAsync()
+        {
+            return GetAsync<string>($"{ConsulSetPersonsConnectionStringUrl}?raw");
         }
     }
 }

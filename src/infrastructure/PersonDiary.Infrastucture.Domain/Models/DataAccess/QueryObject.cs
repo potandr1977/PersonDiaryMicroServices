@@ -7,7 +7,7 @@ namespace PersonDiary.Infrastucture.Domain.Models.DataAccess
 {
     public class QueryObject
     {
-        public QueryObject(string sql, List<object> queryParams, CommandType commandType)
+        public QueryObject(string sql, object queryParams, CommandType? commandType = null)
         {
             if (string.IsNullOrEmpty(sql)) throw new ArgumentNullException(nameof(sql));
             Sql = sql;
@@ -15,7 +15,7 @@ namespace PersonDiary.Infrastucture.Domain.Models.DataAccess
             CommandType = commandType;
         }
         public string Sql { get; private set; }
-        public List<object> QueryParams { get; private set; }
-        public CommandType CommandType { get; private set; }
+        public object QueryParams { get; private set; }
+        public CommandType? CommandType { get; private set; }
     }
 }

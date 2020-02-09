@@ -14,5 +14,12 @@ namespace PersonDiary.Infrastructure.Consul
         Task<string> GetPersonsServiceUrlValueAsync();
 
         Task<string> GetLifeEventsServiceUrlValueAsync();
+        Task SetPersonServiceConnectionStringAsync();
+
+        Task SetLifeEventServiceConnectionStringAsync();
+
+        Task<string> GetLifeEventsServiceConnectionStringAsync();
+
+        Task<string> GetPersonsServiceConnectionStringAsync();
     }
 }

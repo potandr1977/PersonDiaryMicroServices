@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using PersonDiary.Person.Domain.Business;
 using PersonDiary.Person.Dto;
+using PersonDiary.Person.WebApi.Mappers;
 
 namespace PersonDiary.Person.WebApi.Controllers
 {
@@ -9,50 +11,51 @@ namespace PersonDiary.Person.WebApi.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-        public PersonController()
+        private readonly IPersonService personService;
+        public PersonController(IPersonService personService)
         {
+            this.personService = personService;
         }
         
         [HttpGet]
-        public async Task<GetPersonsResponseDto> Get(string json)
+        public Task<GetPersonsResponseDto> Get(string json)
         {
+            throw new NotImplementedException();
+            /*
             var gateWayGetPersonsDto = JsonConvert.DeserializeObject<GetPersonsRequestDto>(json);
             var getPersonDto = MapperPerson.GateWayGetPersonsDtoToPersonDto(gateWayGetPersonsDto);
             var getPersonsResponseDto = await personApiClient.GetPersonsAsync(getPersonDto);
 
             var gateWayGetPersonsResponseDto = MapperPerson.GetPersonsDtoToGateWayDto(getPersonsResponseDto);
             return gateWayGetPersonsResponseDto;
+            
+            return Task.FromResult(new );
+            */
         }
         
         [HttpGet("{id}")]
-        public async Task<GetPersonResponseDto> Get(GateWayGetPersonRequestDto getPersonRequestDto)
+        public async Task<GetPersonResponseDto> Get(GetPersonRequestDto getPersonRequestDto)
         {
-            var getPersonDto = MapperPerson.GateWayGetPersonDtoToPersonDto(getPersonRequestDto);
-            var result = await personApiClient.GetPersonAsync(getPersonDto);
-            
-            return result;
+            var personModel = await personService.GetByIdAsync(getPersonRequestDto.Id);
+            return new GetPersonResponseDto() { Person = Mapper.PersonModelToDto(personModel) };
         }
         
         [HttpPost]
-        public Task Post([FromBody]  UpdatePersonRequestDto request)
+        public Task Post([FromBody]  UpdatePersonRequestDto updatePersonRequestDto)
         {
-            throw new NotImplementedException();
-            //return Ok(answer);
+            return personService.SaveOrUpdateAsync(Mapper.PersonDtoToModel(updatePersonRequestDto.Person));
         }
         
         [HttpPut]
-        public Task Put([FromBody] UpdatePersonRequestDto request)
+        public Task Put([FromBody] UpdatePersonRequestDto updatePersonRequestDto)
         {
-            throw new NotImplementedException();
-            //return Ok(answer);
+            return personService.SaveOrUpdateAsync(Mapper.PersonDtoToModel(updatePersonRequestDto.Person));
         }
         
         [HttpDelete]
         public Task Delete(DeletePersonRequestDto deletePersonRequestDto)
         {
-            throw new NotImplementedException();
-            //return Ok(answer);
+            return personService.DeleteByIdAsync(deletePersonRequestDto.Id);
         }
-
     }
 }

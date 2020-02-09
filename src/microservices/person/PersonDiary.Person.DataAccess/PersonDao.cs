@@ -16,6 +16,14 @@ namespace PersonDiary.Person.DataAccess
         {
             this.dbExecutor = dbExecutor;
         }
+        
+        public Task<PersonModel> GetByIdAsync(int id)
+        {
+            var query = new QueryObject(PersonDaoQueries.GetById, new { Id = id });
+
+            return dbExecutor.QueryFirstOrDefaultAsync<PersonModel>(query);
+        }
+        
         public Task<int> SaveOrUpdateAsync(PersonModel model)
         {
             var query = new QueryObject(PersonDaoQueries.SaveOrUpdate, model);

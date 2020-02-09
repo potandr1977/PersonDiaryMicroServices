@@ -9,6 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infractructure.Settings\PersonDiary.Infractructure.Settings.csproj" />
+    <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.ApiClient\PersonDiary.Infrastructure.ApiClient.csproj" />
+    <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.Cache\PersonDiary.Infrastructure.Cache.csproj" />
+    <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.Consul\PersonDiary.Infrastructure.Consul.csproj" />
+    <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.DataAccess\PersonDiary.Infrastructure.DataAccess.csproj" />
+    <ProjectReference Include="..\PersonDiary.Person.Business\PersonDiary.Person.Business.csproj" />
+    <ProjectReference Include="..\PersonDiary.Person.DataAccess\PersonDiary.Person.DataAccess.csproj" />
+    <ProjectReference Include="..\PersonDiary.Person.Domain\PersonDiary.Person.Domain.csproj" />
     <ProjectReference Include="..\PersonDiary.Person.Dto\PersonDiary.Person.Dto.csproj" />
   </ItemGroup>
 
