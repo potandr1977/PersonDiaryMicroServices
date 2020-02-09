@@ -1,0 +1,1 @@
+﻿delete from dbo.Persons where Id = @Id;

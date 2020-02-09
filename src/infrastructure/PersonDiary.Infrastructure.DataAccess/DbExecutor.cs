@@ -4,6 +4,7 @@ using Dapper;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using PersonDiary.Infrastructure.Domain.Settings;
 
 namespace PersonDiary.Infrastructure.DataAccess
 {
@@ -11,7 +12,7 @@ namespace PersonDiary.Infrastructure.DataAccess
     {
         private readonly string connectionString;
 
-        public DbExecutor(string connectionString)
+        public DbExecutor(ISettingsRepository settingsRepository)
         {
             this.connectionString = connectionString;
         }
@@ -44,6 +45,22 @@ namespace PersonDiary.Infrastructure.DataAccess
                     null,
                     queryObject.CommandType);
 
+            }
+        }
+        public async Task<TR> QueryFirstOrDefaultAsync<TR>(QueryObject queryObject)
+        {
+            using (var cnn = new SqlConnection(this.connectionString))
+            {
+                await cnn.OpenAsync().ConfigureAwait(false);
+
+                var result = await cnn.QueryFirstOrDefaultAsync<TR>(
+                    queryObject.Sql,
+                    queryObject.QueryParams,
+                    null,
+                    null,
+                    queryObject.CommandType).ConfigureAwait(false);
+
+                return result;
             }
         }
     }

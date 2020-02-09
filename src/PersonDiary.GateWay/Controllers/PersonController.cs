@@ -20,43 +20,45 @@ namespace PersonDiary.GateWay.Controllers
         }
         
         [HttpGet]
-        public async Task<ActionResult> Get(string json)
+        public async Task<GateWayGetPersonsResponseDto> Get(string json)
         {
-            var gateWayGetPersonsDto = JsonConvert.DeserializeObject<GateWayGetPersonsDto>(json);
-            var getPersonDto = Mapper.GateWayGetPersonsDtoToPersonDto(gateWayGetPersonsDto);
-            var result = await personApiClient.GetPersons(getPersonDto);
-            return Ok(result);
-            //return await new PersonModel(factory, mapper).GetItemsAsync(JsonConvert.DeserializeObject<GetPersonListRequest>(json));
-            //return Ok(answer);
+            var gateWayGetPersonsDto = JsonConvert.DeserializeObject<GateWayGetPersonsRequestDto>(json);
+            var getPersonDto = MapperPerson.GateWayGetPersonsDtoToPersonDto(gateWayGetPersonsDto);
+            var getPersonsResponseDto = await personApiClient.GetPersonsAsync(getPersonDto);
+
+            var gateWayGetPersonsResponseDto = MapperPerson.GetPersonsDtoToGateWayDto(getPersonsResponseDto);
+            return gateWayGetPersonsResponseDto;
         }
         
         [HttpGet("{id}")]
-        public Task<ActionResult> Get(GetPersonRequestDto getPersonRequestDto)
+        public async Task<GetPersonResponseDto> Get(GateWayGetPersonRequestDto getPersonRequestDto)
         {
-            throw new NotImplementedException();
-            //return Ok(answer);
+            var getPersonDto = MapperPerson.GateWayGetPersonDtoToPersonDto(getPersonRequestDto);
+            var result = await personApiClient.GetPersonAsync(getPersonDto);
+            
+            return result;
         }
         
         [HttpPost]
-        public Task<ActionResult> Post([FromBody]  UpdatePersonRequestDto request)
+        public Task Post([FromBody]  UpdatePersonRequestDto request)
         {
             throw new NotImplementedException();
             //return Ok(answer);
         }
         
         [HttpPut]
-        public Task<ActionResult> Put([FromBody] UpdatePersonRequestDto request)
+        public Task Put([FromBody] UpdatePersonRequestDto request)
         {
             throw new NotImplementedException();
             //return Ok(answer);
         }
         
         [HttpDelete]
-        public Task<ActionResult> Delete(DeletePersonRequestDto deletePersonRequestDto)
+        public Task Delete(DeletePersonRequestDto deletePersonRequestDto)
         {
             throw new NotImplementedException();
             //return Ok(answer);
         }
-
+        
     }
 }

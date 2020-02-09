@@ -11,5 +11,7 @@ namespace PersonDiary.Infrastucture.Domain.DataAccess
         Task<List<T>> QueryAsync<T>(QueryObject queryObject, QuerySetting settings = null);
 
         Task ExecuteAsync(QueryObject queryObject);
+
+        Task<TR> QueryFirstOrDefaultAsync<TR>(QueryObject queryObject);
     }
 }

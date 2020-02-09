@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure.EventBus.RabbitMq", "src\infrastructure\PersonDiary.Infrastructure.EventBus.RabbitMq\PersonDiary.Infrastructure.EventBus.RabbitMq.csproj", "{9E4E816F-6B3F-4945-8258-21F42BB656E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure.Cache.Redis", "src\infrastructure\PersonDiary.Infrastructure.Cache.Redis\PersonDiary.Infrastructure.Cache.Redis.csproj", "{5545927E-47B8-414F-889D-0D2D0E25FFE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infrastructure.Cache", "src\infrastructure\PersonDiary.Infrastructure.Cache\PersonDiary.Infrastructure.Cache.csproj", "{5545927E-47B8-414F-889D-0D2D0E25FFE2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Infractructure.DataAccess.Mongo", "src\infrastructure\PersonDiary.Infractructure.DataAccess.Mongo\PersonDiary.Infractructure.DataAccess.Mongo.csproj", "{FFF07CED-6812-474B-9DED-D3807B10FCA2}"
 EndProject
@@ -62,6 +62,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.GateWay.Dto", "src\PersonDiary.GateWay.Dto\PersonDiary.GateWay.Dto.csproj", "{8CD3D7C5-13E1-4342-84D3-24BB9F8D938F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Person.Dto", "src\microservices\person\PersonDiary.Person.Dto\PersonDiary.Person.Dto.csproj", "{F23FA4C4-8726-4FE3-B4C9-69D70F373DBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Person.Business", "src\microservices\person\PersonDiary.Person.Business\PersonDiary.Person.Business.csproj", "{7E42A475-87BA-42EF-A8BC-A206980A9C57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Person.DataAccess", "src\microservices\person\PersonDiary.Person.DataAccess\PersonDiary.Person.DataAccess.csproj", "{E523933D-BA0B-4725-A265-1C9CC82DAF6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -173,6 +177,14 @@ Global
 		{F23FA4C4-8726-4FE3-B4C9-69D70F373DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F23FA4C4-8726-4FE3-B4C9-69D70F373DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F23FA4C4-8726-4FE3-B4C9-69D70F373DBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E42A475-87BA-42EF-A8BC-A206980A9C57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E42A475-87BA-42EF-A8BC-A206980A9C57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E42A475-87BA-42EF-A8BC-A206980A9C57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E42A475-87BA-42EF-A8BC-A206980A9C57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E523933D-BA0B-4725-A265-1C9CC82DAF6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E523933D-BA0B-4725-A265-1C9CC82DAF6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E523933D-BA0B-4725-A265-1C9CC82DAF6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E523933D-BA0B-4725-A265-1C9CC82DAF6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -199,6 +211,8 @@ Global
 		{101C7C6C-D59C-42EB-A272-602095A42579} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
 		{A8B6110A-7E8D-45D2-B4AA-3701CE3795A2} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
 		{F23FA4C4-8726-4FE3-B4C9-69D70F373DBA} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
+		{7E42A475-87BA-42EF-A8BC-A206980A9C57} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
+		{E523933D-BA0B-4725-A265-1C9CC82DAF6D} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AAC8C9B1-161C-4C87-B2CE-D7C53C230A5D}

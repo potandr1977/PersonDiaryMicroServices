@@ -1,6 +1,6 @@
-﻿namespace PersonDiary.GateWay.Dto
+﻿namespace PersonDiary.Person.Domain.Models
 {
-    public class GateWayPerson
+    public class PersonModel
     {
         public int Id { get; set; }
         

@@ -25,7 +25,7 @@ namespace PersonDiary.GateWay.ApiClient
         }
         protected override string GetApiEndpoint() 
         {
-            return settingsRepository.Get(ConsulSettingKeys.PersonsServiceUrl);
+            return settingsRepository.Get(SettingKeys.PersonsServiceUrl);
         }
         public Task GetLifeEvent(int personId)
         {

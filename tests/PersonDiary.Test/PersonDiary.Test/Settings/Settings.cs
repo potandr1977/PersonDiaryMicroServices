@@ -6,13 +6,17 @@ using NUnit.Framework;
 using NUnit.Framework.Internal;
 using PersonDiary.Infractructure.Settings;
 using PersonDiary.Infrastructure.ApiClient.Helpers;
+using PersonDiary.Infrastructure.Cache;
+using PersonDiary.Infrastructure.Cache.Redis;
 using PersonDiary.Infrastructure.Consul;
 using PersonDiary.Infrastructure.Domain.ApiClient;
+using PersonDiary.Infrastructure.Domain.Cache;
 using PersonDiary.Infrastructure.Domain.Consul;
 using PersonDiary.Infrastructure.Domain.HttpApiClients;
 using PersonDiary.Infrastructure.Domain.Settings;
 using PersonDiary.Infrastructure.HttpApiClient;
 using PersonDiary.Infrastructure.HttpApiClient.Helpers;
+using PersonDiary.Infrastucture.Domain.DataAccess;
 
 namespace PersonDiary.Test.Settings
 {
@@ -20,7 +24,8 @@ namespace PersonDiary.Test.Settings
     {
         private ISettingsRepository settingsRepository;
         private IConsulApiClient consulApiClient;
-        private IConsulCatalogWatcher consulCatalogWatcher;
+        private IConsulSettingsWatcher consulSettingsWatcher;
+        private ICacheStore cacheStore;
         [SetUp]
         public void Setup()
         {
@@ -29,12 +34,15 @@ namespace PersonDiary.Test.Settings
                 .AddSingleton<IUriCreator, UriCreator>()
                 .AddSingleton<IResponseParser, ResponseParser>()
                 .AddSingleton<IConsulApiClient, ConsulApiClient>()
-                .AddSingleton<IConsulCatalogWatcher, ConsulCatalogWatcher>()
+                .AddSingleton<IConsulSettingsWatcher, ConsulSettingsWatcher>()
+                .AddSingleton<IDbExecutorRedis, DbExecutorRedis>()
+                .AddSingleton<ICacheStore, CacheStore>()
                 .AddSingleton<ISettingsRepository, SettingsRepository>()
                 .BuildServiceProvider();
            
             consulApiClient = serviceProvider.GetService<IConsulApiClient>();
-            consulCatalogWatcher = serviceProvider.GetService<IConsulCatalogWatcher>();
+            consulSettingsWatcher = serviceProvider.GetService<IConsulSettingsWatcher>();
+            cacheStore = serviceProvider.GetService<ICacheStore>();
             //settingsRepository = serviceProvider.GetService<SettingsRepository>();
         }
         [Test]
@@ -48,22 +56,33 @@ namespace PersonDiary.Test.Settings
         [Test]
         public async Task CheckSettingsAsync()
         {
-            await consulCatalogWatcher.CheckSettingsAsync((settings) =>
+            var lkv = default(string);
+            var pkv = default(string);
+            await consulSettingsWatcher.CheckSettingsAsync((settings) =>
             {
-                var l = settings.FirstOrDefault(p => p.Key == ConsulSettingKeys.LifeEventsServiceUrl).Value;
-                var pkv = settings.FirstOrDefault(p => p.Key == ConsulSettingKeys.PersonsServiceUrl).Value;
+                lkv = settings.FirstOrDefault(p => p.Key == SettingKeys.LifeEventsServiceUrl).Value;
+                pkv = settings.FirstOrDefault(p => p.Key == SettingKeys.PersonsServiceUrl).Value;
             });
-            Assert.Pass();
+            Assert.IsTrue(lkv!=null && pkv!=null);
         }
 
         [Test]
         public void CheckSettingsRepositoryAsync()
         {  
-            var settingsRepository = new SettingsRepository(consulCatalogWatcher);
-            settingsRepository.Initialize();
-            var personUrl = settingsRepository.Get(ConsulSettingKeys.PersonsServiceUrl);
-            var lifeEventUrl = settingsRepository.Get(ConsulSettingKeys.LifeEventsServiceUrl);
-            Assert.Pass();
+            var settingsRepository = new SettingsRepository(cacheStore);
+            var personUrl = settingsRepository.Get(SettingKeys.PersonsServiceUrl);
+            var lifeEventUrl = settingsRepository.Get(SettingKeys.LifeEventsServiceUrl);
+            
+            Assert.IsTrue(!string.IsNullOrEmpty(personUrl) && !string.IsNullOrEmpty(lifeEventUrl));
+        }
+        
+        [Test]
+        public void CheckRedisCacheStore()
+        {
+            var settingsSerialized = "asdfasdf";
+            cacheStore.SetValue("test", settingsSerialized);
+            var getvalue = cacheStore.GetValue("test");
+            Assert.IsTrue(settingsSerialized==getvalue);
         }
     }
 }

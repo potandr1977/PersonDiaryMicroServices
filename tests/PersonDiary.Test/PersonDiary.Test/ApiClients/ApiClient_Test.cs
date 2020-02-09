@@ -35,7 +35,7 @@ namespace PersonDiary.Test.ApiClients
         [Test]
         public async Task GetConsulValue()
         {
-            await personApiClient.CreatePerson(new UpdatePersonRequestDto
+            await personApiClient.CreatePersonAsync(new UpdatePersonRequestDto
             {
                 Person = new Person.Dto.Person
                 {

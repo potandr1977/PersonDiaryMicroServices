@@ -12,6 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\infrastructure\PersonDiary.Infractructure.Settings\PersonDiary.Infractructure.Settings.csproj" />
+    <ProjectReference Include="..\infrastructure\PersonDiary.Infrastructure.ApiClient\PersonDiary.Infrastructure.ApiClient.csproj" />
+    <ProjectReference Include="..\infrastructure\PersonDiary.Infrastructure.Cache\PersonDiary.Infrastructure.Cache.csproj" />
     <ProjectReference Include="..\microservices\person\PersonDiary.Person.Dto\PersonDiary.Person.Dto.csproj" />
     <ProjectReference Include="..\PersonDiary.GateWay.ApiClient\PersonDiary.GateWay.ApiClient.csproj" />
     <ProjectReference Include="..\PersonDiary.GateWay.Dto\PersonDiary.GateWay.Dto.csproj" />

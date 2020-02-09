@@ -1,5 +1,5 @@
 ﻿using System;
-using PersonDiary.Infrastructure.Domain.Cache;
+using PersonDiary.Infrastucture.Domain.DataAccess;
 using StackExchange.Redis;
 
 namespace PersonDiary.Infrastructure.Cache.Redis
@@ -10,6 +10,11 @@ namespace PersonDiary.Infrastructure.Cache.Redis
         private const string redisHost = "localhost";
         private readonly int redisPort = 6379;
         private ConnectionMultiplexer connectionMultiplexer;
+        
+        public DbExecutorRedis()
+        {
+            Connect();
+        }
         
         public void Connect()
         {

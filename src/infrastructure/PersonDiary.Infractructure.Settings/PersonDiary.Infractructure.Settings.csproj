@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PersonDiary.Infrastructure.Consul\PersonDiary.Infrastructure.Consul.csproj" />
     <ProjectReference Include="..\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
 ﻿namespace PersonDiary.GateWay.Dto
 {
-    public class GateWayDeletePersonDto
+    public class GateWayDeletePersonRequestDto
     {
         public int Id { get; set; }
     }

@@ -2,7 +2,7 @@
 
 namespace PersonDiary.GateWay.Dto
 {
-    public class GateWayUpdatePersonDto
+    public class GateWayUpdatePersonRequestDto
     {
         public int Id { get; set; }
         

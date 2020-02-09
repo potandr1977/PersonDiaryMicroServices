@@ -6,31 +6,29 @@ using PersonDiary.Infrastructure.Domain.Settings;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using PersonDiary.Infrastructure.Consul;
+using PersonDiary.Infrastructure.Domain.Cache;
 
 namespace PersonDiary.Infractructure.Settings
 {
     public class SettingsRepository : ISettingsRepository
     {
         private IReadOnlyCollection<KeyValuePair<string,string>> settings;
-        private readonly IConsulCatalogWatcher consulCatalogWatcher;
-
-        public SettingsRepository(IConsulCatalogWatcher consulCatalogWatcher)
+        private readonly ICacheStore cacheStore;
+        
+        public SettingsRepository(ICacheStore cacheStore)
         {
-            this.consulCatalogWatcher = consulCatalogWatcher;
-        }
-
-        public async void Initialize()
-        {
-            await consulCatalogWatcher.CheckSettingsAsync(settings=>this.settings = settings);
+            this.cacheStore = cacheStore;
+            var settingsSerialized = cacheStore.GetValue(SettingKeys.RedisSettingsKey);
+            settings = JsonConvert.DeserializeObject<IReadOnlyCollection<KeyValuePair<string, string>>>(settingsSerialized);
         }
 
         public string Get(string name)
         {
-            var value = settings.FirstOrDefault().Value;
-            if (value == null)
-                throw new NullReferenceException();
-            
+            var value = settings.FirstOrDefault(p=>p.Key==name).Value;
+           
             return settings.FirstOrDefault().Value; 
         }
 
