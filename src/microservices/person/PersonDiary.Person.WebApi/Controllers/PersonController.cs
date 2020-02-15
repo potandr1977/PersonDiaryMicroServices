@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using PersonDiary.Person.Domain.Business;
 using PersonDiary.Person.Dto;
 using PersonDiary.Person.WebApi.Mappers;
@@ -18,19 +20,12 @@ namespace PersonDiary.Person.WebApi.Controllers
         }
         
         [HttpGet]
-        public Task<GetPersonsResponseDto> Get(string json)
+        public async Task<GetPersonsResponseDto> Get(string json)
         {
-            throw new NotImplementedException();
-            /*
             var gateWayGetPersonsDto = JsonConvert.DeserializeObject<GetPersonsRequestDto>(json);
-            var getPersonDto = MapperPerson.GateWayGetPersonsDtoToPersonDto(gateWayGetPersonsDto);
-            var getPersonsResponseDto = await personApiClient.GetPersonsAsync(getPersonDto);
+            var personModels = await personService.GetAllAsync(gateWayGetPersonsDto.PageNo,gateWayGetPersonsDto.PageSize);
 
-            var gateWayGetPersonsResponseDto = MapperPerson.GetPersonsDtoToGateWayDto(getPersonsResponseDto);
-            return gateWayGetPersonsResponseDto;
-            
-            return Task.FromResult(new );
-            */
+            return new GetPersonsResponseDto() {Persons = Mapper.PersonsModelToDto(personModels)};
         }
         
         [HttpGet("{id}")]

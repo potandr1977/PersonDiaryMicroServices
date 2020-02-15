@@ -1,24 +1,21 @@
-﻿using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using PersonDiary.GateWay.ApiClient;
 using PersonDiary.Infractructure.Settings;
 using PersonDiary.Infrastructure.ApiClient.Helpers;
-using PersonDiary.Infrastructure.Consul;
 using PersonDiary.Infrastructure.Domain.ApiClient;
-using PersonDiary.Infrastructure.Domain.Consul;
 using PersonDiary.Infrastructure.Domain.HttpApiClients;
 using PersonDiary.Infrastructure.Domain.Settings;
 using PersonDiary.Infrastructure.HttpApiClient;
 using PersonDiary.Infrastructure.HttpApiClient.Helpers;
-using PersonDiary.Person.Dto;
+using PersonDiary.Person.Domain.Business;
 
-namespace PersonDiary.Test.ApiClients
+namespace PersonDiary.Test.Person.Business
 {
     [TestFixture]
-    public class ApiClient_Test
+    public class PersonService
     {
-        private IPersonApiClient personApiClient;
+        private IPersonService personService;
         [SetUp]
         public void Setup()
         {
@@ -30,22 +27,7 @@ namespace PersonDiary.Test.ApiClients
                 .AddSingleton<IPersonApiClient, PersonApiClient>()
                 .BuildServiceProvider();
            
-            personApiClient = serviceProvider.GetService<IPersonApiClient>();
-        }
-        [Test]
-        public async Task GetConsulValue()
-        {
-            await personApiClient.CreatePersonAsync(new UpdatePersonRequestDto
-            {
-                Person = new PersonDiary.Person.Dto.Person
-                {
-                    Id = 0,
-                    Name = "Name1",
-                    Surname= "Surname1", 
-                    HasFile = true  
-                }
-            });
-            Assert.Pass();
+            personService = serviceProvider.GetService<IPersonService>();
         }
     }
 }

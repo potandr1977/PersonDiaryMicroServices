@@ -1,4 +1,6 @@
-﻿using PersonDiary.Person.Domain.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using PersonDiary.Person.Domain.Models;
 
 namespace PersonDiary.Person.WebApi.Mappers
 {
@@ -15,15 +17,20 @@ namespace PersonDiary.Person.WebApi.Mappers
             };
         }
         
-        public static Person.Dto.Person PersonModelToDto(PersonModel personModel)
+        public static Dto.Person PersonModelToDto(PersonModel personModel)
         {
-            return new Person.Dto.Person
+            return new Dto.Person
             {
                 Id  = personModel.Id,
                 Name = personModel.Name,
                 Surname =  personModel.Surname,
                 HasFile = personModel.HasFile
             };
+        }
+        
+        public static List<Dto.Person> PersonsModelToDto(List<PersonModel> personModels)
+        {
+            return personModels.Select(PersonModelToDto).ToList();
         }
         
     }

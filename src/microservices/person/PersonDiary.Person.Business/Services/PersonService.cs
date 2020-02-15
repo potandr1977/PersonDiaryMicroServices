@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using PersonDiary.Person.Domain.Business;
 using PersonDiary.Person.Domain.DataAccess;
 using PersonDiary.Person.Domain.Models;
@@ -12,6 +13,11 @@ namespace PersonDiary.Person.Business.Services
         public PersonService(IPersonDao personDao)
         {
             this.personDao = personDao;
+        }
+
+        public Task<List<PersonModel>> GetAllAsync(int pageNo, int pageSize)
+        {
+            return personDao.GetAllAsync(pageNo, pageSize);
         }
 
         public Task<PersonModel> GetByIdAsync(int id)

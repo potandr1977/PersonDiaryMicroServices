@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Dapper;
 using PersonDiary.Infrastucture.Domain.DataAccess;
 using PersonDiary.Infrastucture.Domain.Models.DataAccess;
@@ -15,6 +16,13 @@ namespace PersonDiary.Person.DataAccess
         public PersonDao(IDbExecutor dbExecutor)
         {
             this.dbExecutor = dbExecutor;
+        }
+        
+        public Task<List<PersonModel>> GetAllAsync(int pageNo, int pageSize)
+        {
+            var query = new QueryObject(PersonDaoQueries.GetAll,new { pageNo, pageSize});
+
+            return dbExecutor.QueryFirstOrDefaultAsync<List<PersonModel>>(query);
         }
         
         public Task<PersonModel> GetByIdAsync(int id)
