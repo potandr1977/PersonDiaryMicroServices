@@ -4,4 +4,8 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.EventBus.RabbitMq\PersonDiary.Infrastructure.EventBus.RabbitMq.csproj" />
+    </ItemGroup>
+
 </Project>

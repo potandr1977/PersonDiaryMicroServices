@@ -9,6 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.DataAccess\PersonDiary.Infrastructure.DataAccess.csproj" />
       <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
       <ProjectReference Include="..\PersonDiary.Person.Domain\PersonDiary.Person.Domain.csproj" />
     </ItemGroup>

@@ -8,5 +8,6 @@
         public const string ConnectionString = "ConnectionString";
         public const string ConnectionStringLifeEvent = "ConnectionStringLifeEvent";
         public const string ConnectionStringPerson = "ConnectionStringPerson";
+        public const string EventBusConnectionStringPerson = "EventBusConnectionStringPerson";
     }
 }

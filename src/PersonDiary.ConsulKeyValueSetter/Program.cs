@@ -40,7 +40,14 @@ namespace PersonDiary.ConsulKeyValueSetter
             var personConnectionStringTask = consulApiClient.SetPersonServiceConnectionStringAsync();
             var lifeConnectionStringEventTask = consulApiClient.SetLifeEventServiceConnectionStringAsync();
 
-            await Task.WhenAll(personTask, lifeEventTask,personConnectionStringTask,lifeConnectionStringEventTask);
+            var eventBusPersonConnectionStringTask = consulApiClient.SetPersonEventBusConnectionStringAsync();
+
+            await Task.WhenAll(
+                personTask, 
+                lifeEventTask,
+                personConnectionStringTask,
+                lifeConnectionStringEventTask,
+                eventBusPersonConnectionStringTask);
 
             if (personTask.Status == TaskStatus.RanToCompletion)
                 Console.WriteLine("Person service url registered");
@@ -53,6 +60,9 @@ namespace PersonDiary.ConsulKeyValueSetter
 
             if (lifeConnectionStringEventTask.Status == TaskStatus.RanToCompletion)
                 Console.WriteLine("LifeEvent service connection string registered");
+            
+            if (eventBusPersonConnectionStringTask.Status == TaskStatus.RanToCompletion)
+                Console.WriteLine("Person Eventbus connection string registered");
 
             Console.WriteLine("Values has been set");
             Console.ReadLine();

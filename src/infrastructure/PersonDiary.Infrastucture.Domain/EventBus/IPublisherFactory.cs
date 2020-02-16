@@ -1,7 +1,7 @@
 ﻿namespace PersonDiary.Infrastructure.Domain.EventBus
 {
-    public interface IPublisherFactory<in T>
+    public interface IPublisherFactory
     {
-        IPublisher<T> Create();
+        IPublisher<T> Create<T>() where T : class;
     }
 }

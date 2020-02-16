@@ -8,4 +8,12 @@
     <PackageReference Include="EasyNetQ" Version="3.7.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EventBus" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

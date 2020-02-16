@@ -14,10 +14,12 @@
     <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.Cache\PersonDiary.Infrastructure.Cache.csproj" />
     <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.Consul\PersonDiary.Infrastructure.Consul.csproj" />
     <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.DataAccess\PersonDiary.Infrastructure.DataAccess.csproj" />
+    <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.EventBus.RabbitMq\PersonDiary.Infrastructure.EventBus.RabbitMq.csproj" />
     <ProjectReference Include="..\PersonDiary.Person.Business\PersonDiary.Person.Business.csproj" />
     <ProjectReference Include="..\PersonDiary.Person.DataAccess\PersonDiary.Person.DataAccess.csproj" />
     <ProjectReference Include="..\PersonDiary.Person.Domain\PersonDiary.Person.Domain.csproj" />
     <ProjectReference Include="..\PersonDiary.Person.Dto\PersonDiary.Person.Dto.csproj" />
+    <ProjectReference Include="..\PersonDiary.Person.EventBus\PersonDiary.Person.EventBus.csproj" />
   </ItemGroup>
 
 

@@ -1,21 +1,23 @@
-﻿using PersonDiary.Infrastructure.Domain.EventBus;
+﻿using PersonDiary.Infrastructure.Consul;
+using PersonDiary.Infrastructure.Domain.EventBus;
+using PersonDiary.Infrastructure.Domain.Settings;
 
 namespace PersonDiary.Infrastructure.EventBus.RabbitMq
 {
-    public class PublisherFactory<T> : IPublisherFactory<T> where T : class
+    public abstract class PublisherFactory: IPublisherFactory
     {
-        private readonly string rabbitConnectionString;
+        private readonly string eventBusConnectionString;
         private readonly string topic;
-
-        public PublisherFactory(string rabbitConnectionString)
+        
+        protected PublisherFactory(ISettingsRepository settingsRepository,string topic)
         {
-            this.rabbitConnectionString = rabbitConnectionString;
+            this.eventBusConnectionString = settingsRepository.Get(SettingKeys.EventBusConnectionStringPerson);
             this.topic = topic;
         }
         
-        public IPublisher<T> Create()
+        public IPublisher<T> Create<T>() where T : class
         {
-            return new Publisher<T>(rabbitConnectionString, topic);
+            return new Publisher<T>(eventBusConnectionString, topic);
         }
 
         

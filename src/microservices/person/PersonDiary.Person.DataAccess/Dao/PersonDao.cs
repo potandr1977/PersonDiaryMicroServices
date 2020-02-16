@@ -1,19 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Dapper;
-using PersonDiary.Infrastucture.Domain.DataAccess;
 using PersonDiary.Infrastucture.Domain.Models.DataAccess;
 using PersonDiary.Person.DataAccess.Queries;
 using PersonDiary.Person.Domain.DataAccess;
+using PersonDiary.Person.Domain.DataAccess.Executor;
 using PersonDiary.Person.Domain.Models;
 
-namespace PersonDiary.Person.DataAccess
+namespace PersonDiary.Person.DataAccess.Dao
 {
     public class PersonDao : IPersonDao
     {
-        private readonly IDbExecutor dbExecutor;
+        private readonly IPersonDbExecutor dbExecutor;
         
-        public PersonDao(IDbExecutor dbExecutor)
+        public PersonDao(IPersonDbExecutor dbExecutor)
         {
             this.dbExecutor = dbExecutor;
         }

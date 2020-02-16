@@ -19,15 +19,21 @@ using PersonDiary.Infrastructure.DataAccess;
 using PersonDiary.Infrastructure.Domain.ApiClient;
 using PersonDiary.Infrastructure.Domain.Cache;
 using PersonDiary.Infrastructure.Domain.Consul;
+using PersonDiary.Infrastructure.Domain.EventBus;
 using PersonDiary.Infrastructure.Domain.HttpApiClients;
 using PersonDiary.Infrastructure.Domain.Settings;
+using PersonDiary.Infrastructure.EventBus.RabbitMq;
 using PersonDiary.Infrastructure.HttpApiClient;
 using PersonDiary.Infrastructure.HttpApiClient.Helpers;
 using PersonDiary.Infrastucture.Domain.DataAccess;
 using PersonDiary.Person.Business.Services;
 using PersonDiary.Person.DataAccess;
+using PersonDiary.Person.DataAccess.Dao;
+using PersonDiary.Person.DataAccess.Executor;
 using PersonDiary.Person.Domain.Business;
 using PersonDiary.Person.Domain.DataAccess;
+using PersonDiary.Person.Domain.DataAccess.Executor;
+using PersonDiary.Person.EventBus;
 
 namespace PersonDiary.Person.WebApi
 {
@@ -52,9 +58,10 @@ namespace PersonDiary.Person.WebApi
                 .AddSingleton<IDbExecutorRedis, DbExecutorRedis>()
                 .AddSingleton<ICacheStore, CacheStore>()
                 .AddSingleton<ISettingsRepository, SettingsRepository>()
-                .AddSingleton<IDbExecutor, DbExecutor>()
+                .AddSingleton<IPersonDbExecutor, PersonDbExecutor>()
                 .AddSingleton<IPersonDao, PersonDao>()
-                .AddSingleton<IPersonService, PersonService>();
+                .AddSingleton<IPersonService, PersonService>()
+                .AddSingleton<IPublisherFactory,PersonPublisherFactory>();
             
             services.AddControllers();
         }

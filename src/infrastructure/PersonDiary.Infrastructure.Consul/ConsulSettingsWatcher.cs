@@ -23,13 +23,15 @@ namespace PersonDiary.Infrastructure.Consul
             var lifeEventUrl = await consulApiClient.GetLifeEventsServiceUrlValueAsync();
             var personConnectionString = await consulApiClient.GetPersonsServiceConnectionStringAsync();
             var lifeEventConnectionString = await consulApiClient.GetLifeEventsServiceConnectionStringAsync();
+            var eventBusConnectionPersonString = await consulApiClient.GetPersonEventBusConnectionStringAsync();
 
             var settings = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>(SettingKeys.PersonsServiceUrl, personUrl),
                 new KeyValuePair<string, string>(SettingKeys.LifeEventsServiceUrl, lifeEventUrl),
                 new KeyValuePair<string, string>(SettingKeys.ConnectionStringPerson, personConnectionString),
-                new KeyValuePair<string, string>(SettingKeys.ConnectionStringLifeEvent, lifeEventConnectionString)
+                new KeyValuePair<string, string>(SettingKeys.ConnectionStringLifeEvent, lifeEventConnectionString),
+                new KeyValuePair<string, string>(SettingKeys.EventBusConnectionStringPerson, eventBusConnectionPersonString)
             };
 
             var settingsSerialized = JsonConvert.SerializeObject(settings);
