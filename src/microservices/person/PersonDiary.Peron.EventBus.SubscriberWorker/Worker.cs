@@ -14,17 +14,19 @@ namespace PersonDiary.Peron.EventBus.ConsumerWorker
 {
     public class Worker : BackgroundService
     {
-        private readonly ILogger<Worker> _logger;
+        private readonly ILogger<Worker> logger;
         private readonly IPersonSubscriberFactory personSubscriberFactory;
         public Worker(ILogger<Worker> logger, IPersonSubscriberFactory personSubscriberFactory)
         {
-            this.personSubscriberFactory = this.personSubscriberFactory;
+            this.logger = logger;
+            
+            this.personSubscriberFactory = personSubscriberFactory;
             ISubscriber<PersonCreate> subscriber = personSubscriberFactory.Create<PersonCreate>();
             subscriber.Subscribe(personCreate =>
             {
-                _logger.LogInformation($"PersonCreate event received, id ={personCreate.Id}");   
+                this.logger.LogInformation($"PersonCreate event received, id ={personCreate.Id}");   
             });
-            _logger = logger;
+            
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -33,7 +35,7 @@ namespace PersonDiary.Peron.EventBus.ConsumerWorker
             {
                 
                 
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(1000, stoppingToken);
             }
         }

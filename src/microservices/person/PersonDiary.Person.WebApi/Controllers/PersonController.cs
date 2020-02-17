@@ -45,7 +45,7 @@ namespace PersonDiary.Person.WebApi.Controllers
             var id = await personService.SaveOrUpdateAsync(Mapper.PersonDtoToModel(updatePersonRequestDto.Person));
             
             var publisher = publisherFactory.Create<PersonCreate>();
-            publisher.PublishEventAsync(new PersonCreate() { Id = id});//call and forget
+            await publisher.PublishEventAsync(new PersonCreate() { Id = id});
         }
         
         [HttpPut]
