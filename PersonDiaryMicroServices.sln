@@ -49,7 +49,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Test", "tests\P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.EventBus.ConsumerWorker", "src\microservices\lifeevent\PersonDiary.Lifeevent.EventBus.ConsumerWorker\PersonDiary.Lifeevent.EventBus.ConsumerWorker.csproj", "{519DAFF8-0028-495A-BA35-BAD9F7CB507C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Peron.EventBus.ConsumerWorker", "src\microservices\person\PersonDiary.Peron.EventBus.ConsumerWorker\PersonDiary.Peron.EventBus.ConsumerWorker.csproj", "{101C7C6C-D59C-42EB-A272-602095A42579}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Peron.EventBus.SubscriberWorker", "src\microservices\person\PersonDiary.Peron.EventBus.SubscriberWorker\PersonDiary.Peron.EventBus.SubscriberWorker.csproj", "{101C7C6C-D59C-42EB-A272-602095A42579}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Person.EventBus", "src\microservices\person\PersonDiary.Person.EventBus\PersonDiary.Person.EventBus.csproj", "{A8B6110A-7E8D-45D2-B4AA-3701CE3795A2}"
 EndProject

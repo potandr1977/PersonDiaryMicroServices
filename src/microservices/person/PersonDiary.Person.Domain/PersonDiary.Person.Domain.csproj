@@ -9,10 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EventBus" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
   </ItemGroup>
 

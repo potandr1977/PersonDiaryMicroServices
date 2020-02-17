@@ -3,10 +3,15 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <UserSecretsId>dotnet-PersonDiary.Peron.EventBus.ConsumerWorker-C06654CB-7B4F-49C6-AFF7-10BC5586744C</UserSecretsId>
+        <RootNamespace>PersonDiary.Peron.EventBus.ConsumerWorker</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="EasyNetQ" Version="3.7.1" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PersonDiary.Person.EventBus\PersonDiary.Person.EventBus.csproj" />
     </ItemGroup>
 </Project>
