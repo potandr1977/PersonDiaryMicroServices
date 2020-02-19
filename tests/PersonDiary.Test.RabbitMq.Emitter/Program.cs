@@ -9,7 +9,7 @@ namespace PersonDiary.Test.RabbitMq.Emitter
     class Program
     {
         private const string RabbitConnectionString = "host=localhost";
-        private const string Topic = "Z.A";
+        private const string Topic = "PersonDiary.Person.EventBus";
 
         private static void Main(string[] args)
         {
@@ -17,7 +17,7 @@ namespace PersonDiary.Test.RabbitMq.Emitter
             while ((input = Console.ReadLine()) != "Quit")
             {
                 IPublisher<PersonCreate> publisher = new Publisher<PersonCreate>(RabbitConnectionString, Topic);
-                publisher.PublishEvent(new PersonCreate { Id = int.Parse(input) });
+                if (input != null) publisher.PublishEvent(new PersonCreate {Id = int.Parse(input)});
             }
             Console.WriteLine("Published");
             Console.ReadLine();

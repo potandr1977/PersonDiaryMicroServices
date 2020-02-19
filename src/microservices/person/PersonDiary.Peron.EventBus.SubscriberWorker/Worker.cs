@@ -16,12 +16,12 @@ namespace PersonDiary.Peron.EventBus.ConsumerWorker
     {
         private readonly ILogger<Worker> logger;
         private readonly IPersonSubscriberFactory personSubscriberFactory;
-        public Worker(ILogger<Worker> logger, IPersonSubscriberFactory personSubscriberFactory)
+        private readonly ISubscriber<PersonCreate> subscriber;
+        public Worker(ILogger<Worker> logger , IPersonSubscriberFactory personSubscriberFactory)
         {
             this.logger = logger;
-            
             this.personSubscriberFactory = personSubscriberFactory;
-            ISubscriber<PersonCreate> subscriber = personSubscriberFactory.Create<PersonCreate>();
+            subscriber = personSubscriberFactory.Create<PersonCreate>();
             subscriber.Subscribe(personCreate =>
             {
                 this.logger.LogInformation($"PersonCreate event received, id ={personCreate.Id}");   
@@ -33,9 +33,6 @@ namespace PersonDiary.Peron.EventBus.ConsumerWorker
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                
-                
-                logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 await Task.Delay(1000, stoppingToken);
             }
         }

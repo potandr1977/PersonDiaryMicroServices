@@ -27,9 +27,7 @@ namespace PersonDiary.Infractructure.Settings
 
         public string Get(string name)
         {
-            var value = settings.FirstOrDefault(p=>p.Key==name).Value;
-           
-            return settings.FirstOrDefault().Value; 
+            return settings.FirstOrDefault(p=>p.Key==name).Value;
         }
 
     }

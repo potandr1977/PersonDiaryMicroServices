@@ -8,7 +8,7 @@ namespace PersonDiary.Test.RabbitMq.Receiver
     class Program
     {
         private const string RabbitConnectionString = "host=localhost";
-        private const string TopicReceiver = "Z.*";
+        private const string TopicReceiver = "PersonDiary.Person.EventBus";
         private const string SubscriptionId = "MySubscription";
 
         private static void Main(string[] args)

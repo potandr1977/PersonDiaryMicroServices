@@ -8,6 +8,11 @@ using PersonDiary.Infrastructure.HttpApiClient;
 using PersonDiary.Infrastructure.HttpApiClient.Helpers;
 using System;
 using System.Threading.Tasks;
+using PersonDiary.Infrastructure.Cache;
+using PersonDiary.Infrastructure.Cache.Redis;
+using PersonDiary.Infrastructure.Domain.Cache;
+using PersonDiary.Infrastructure.Domain.Consul;
+using PersonDiary.Infrastucture.Domain.DataAccess;
 
 namespace PersonDiary.ConsulKeyValueSetter
 {
@@ -20,7 +25,10 @@ namespace PersonDiary.ConsulKeyValueSetter
                 .AddSingleton<IHttpRequestExecutor, HttpRequestExecutor>()
                 .AddSingleton<IUriCreator, UriCreator>()
                 .AddSingleton<IResponseParser, ResponseParser>()
+                .AddSingleton<IDbExecutorRedis,DbExecutorRedis>()
                 .AddSingleton<IConsulApiClient, ConsulApiClient>()
+                .AddSingleton<ICacheStore,CacheStore>()
+                .AddSingleton<IConsulSettingsWatcher,ConsulSettingsWatcher>()
                 .BuildServiceProvider();
 
             serviceProvider
@@ -64,6 +72,9 @@ namespace PersonDiary.ConsulKeyValueSetter
             if (eventBusPersonConnectionStringTask.Status == TaskStatus.RanToCompletion)
                 Console.WriteLine("Person Eventbus connection string registered");
 
+            await serviceProvider
+                .GetService<IConsulSettingsWatcher>().CheckSettingsAsync();
+            
             Console.WriteLine("Values has been set");
             Console.ReadLine();
         }

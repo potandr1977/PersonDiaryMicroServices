@@ -7,8 +7,10 @@ namespace PersonDiary.Person.EventBus
 {
     public class PersonSubscriberFactory : SubscriberFactory, IPersonSubscriberFactory
     {
-        protected PersonSubscriberFactory(ISettingsRepository settingsRepository, string topicReceiver, string subscriptionId) : 
-            base(settingsRepository, topicReceiver, subscriptionId)
+        private const string TopicReceiver = "PersonDiary.Person.EventBus";
+        private const string SubscriptionId = "PersonDiary.Person.EventBus.PersonSubscriber";
+        public PersonSubscriberFactory(ISettingsRepository settingsRepository) : 
+            base(settingsRepository, TopicReceiver, SubscriptionId)
         {
         }
     }
