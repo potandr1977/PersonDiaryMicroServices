@@ -16,8 +16,8 @@ namespace PersonDiary.Test.RabbitMq.Emitter
             var input = "";
             while ((input = Console.ReadLine()) != "Quit")
             {
-                IPublisher<PersonCreate> publisher = new Publisher<PersonCreate>(RabbitConnectionString, Topic);
-                if (input != null) publisher.PublishEvent(new PersonCreate {Id = int.Parse(input)});
+                IPublisher<LifeEventCreate> publisher = new Publisher<LifeEventCreate>(RabbitConnectionString, Topic);
+                if (input != null) publisher.PublishEvent(new LifeEventCreate {Id = int.Parse(input)});
             }
             Console.WriteLine("Published");
             Console.ReadLine();

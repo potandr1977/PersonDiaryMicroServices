@@ -2,12 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using PersonDiary.GateWay.ApiClient;
-using PersonDiary.GateWay.Dto;
-using PersonDiary.GateWay.Mappers;
+using PersonDiary.Person.ApiClient;
 using PersonDiary.Person.Dto;
+using PersonDiary.Person.Mappers;
 
-namespace PersonDiary.GateWay.Controllers
+namespace PersonDiary.Person.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -25,8 +24,8 @@ namespace PersonDiary.GateWay.Controllers
             var gateWayGetPersonsDto = JsonConvert.DeserializeObject<GateWayGetPersonsRequestDto>(json);
             var getPersonDto = MapperPerson.GateWayGetPersonsDtoToPersonDto(gateWayGetPersonsDto);
             var getPersonsResponseDto = await personApiClient.GetPersonsAsync(getPersonDto);
-
             var gateWayGetPersonsResponseDto = MapperPerson.GetPersonsDtoToGateWayDto(getPersonsResponseDto);
+            
             return gateWayGetPersonsResponseDto;
         }
         
@@ -43,21 +42,18 @@ namespace PersonDiary.GateWay.Controllers
         public Task Post([FromBody]  UpdatePersonRequestDto request)
         {
             throw new NotImplementedException();
-            //return Ok(answer);
         }
         
         [HttpPut]
         public Task Put([FromBody] UpdatePersonRequestDto request)
         {
             throw new NotImplementedException();
-            //return Ok(answer);
         }
         
         [HttpDelete]
         public Task Delete(DeletePersonRequestDto deletePersonRequestDto)
         {
             throw new NotImplementedException();
-            //return Ok(answer);
         }
         
     }

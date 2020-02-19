@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PersonDiary.GateWay.Dto
+namespace PersonDiary.Person.Dto
 {
     public class GateWayUpdateLifeEventDto
     {

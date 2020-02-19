@@ -1,5 +1,5 @@
 ﻿
-namespace PersonDiary.GateWay.Dto
+namespace PersonDiary.Person.Dto
 {
     public class GateWayGetPersonResponseDto
     {

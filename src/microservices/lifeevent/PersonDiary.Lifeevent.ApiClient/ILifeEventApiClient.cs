@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using PersonDiary.GateWay.Dto;
+using PersonDiary.Person.Dto;
 
-namespace PersonDiary.GateWay.ApiClient
+namespace PersonDiary.Lifeevent.ApiClient
 {
     public interface ILifeEventApiClient
     {
@@ -9,7 +9,7 @@ namespace PersonDiary.GateWay.ApiClient
 
         Task GetLifeEvents(int id);
 
-        Task<string> SaveOrUpdate(GateWayUpdateLifeEventDto lifeevent);
+        Task<string> SaveOrUpdate(GateWayUpdateLifeEventDto gateWayUpdateLifeEventDto);
 
         Task<string> Delete(int id);
     }

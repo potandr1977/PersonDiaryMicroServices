@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using PersonDiary.GateWay.ApiClient;
 using PersonDiary.Infractructure.Settings;
 using PersonDiary.Infrastructure.ApiClient.Helpers;
 using PersonDiary.Infrastructure.Cache;
@@ -24,8 +23,9 @@ using PersonDiary.Infrastructure.Domain.Settings;
 using PersonDiary.Infrastructure.HttpApiClient;
 using PersonDiary.Infrastructure.HttpApiClient.Helpers;
 using PersonDiary.Infrastucture.Domain.DataAccess;
+using PersonDiary.Person.ApiClient;
 
-namespace PersonDiary.GateWay
+namespace PersonDiary.Person
 {
     public class Startup
     {

@@ -43,7 +43,6 @@ namespace PersonDiary.Test.Settings
             consulApiClient = serviceProvider.GetService<IConsulApiClient>();
             consulSettingsWatcher = serviceProvider.GetService<IConsulSettingsWatcher>();
             cacheStore = serviceProvider.GetService<ICacheStore>();
-            //settingsRepository = serviceProvider.GetService<SettingsRepository>();
         }
         [Test]
         public async Task GetConsulValue()

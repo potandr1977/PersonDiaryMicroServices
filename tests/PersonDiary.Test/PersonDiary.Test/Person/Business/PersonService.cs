@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
-using PersonDiary.GateWay.ApiClient;
+using PersonDiary.Person.ApiClient;
 using PersonDiary.Infractructure.Settings;
 using PersonDiary.Infrastructure.ApiClient.Helpers;
 using PersonDiary.Infrastructure.Domain.ApiClient;

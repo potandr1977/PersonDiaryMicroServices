@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <UserSecretsId>dotnet-PersonDiary.Peron.EventBus.ConsumerWorker-C06654CB-7B4F-49C6-AFF7-10BC5586744C</UserSecretsId>
-        <RootNamespace>PersonDiary.Peron.EventBus.ConsumerWorker</RootNamespace>
+        <RootNamespace>PersonDiary.Peron.EventBus.SubscriberWorker</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,7 +13,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infractructure.Settings\PersonDiary.Infractructure.Settings.csproj" />
+      <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.ApiClient\PersonDiary.Infrastructure.ApiClient.csproj" />
       <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.Cache\PersonDiary.Infrastructure.Cache.csproj" />
+      <ProjectReference Include="..\PersonDiary.Person.ApiClient\PersonDiary.Person.ApiClient.csproj" />
       <ProjectReference Include="..\PersonDiary.Person.EventBus\PersonDiary.Person.EventBus.csproj" />
     </ItemGroup>
 </Project>

@@ -49,15 +49,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Test", "tests\P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.EventBus.ConsumerWorker", "src\microservices\lifeevent\PersonDiary.Lifeevent.EventBus.ConsumerWorker\PersonDiary.Lifeevent.EventBus.ConsumerWorker.csproj", "{519DAFF8-0028-495A-BA35-BAD9F7CB507C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Peron.EventBus.SubscriberWorker", "src\microservices\person\PersonDiary.Peron.EventBus.SubscriberWorker\PersonDiary.Peron.EventBus.SubscriberWorker.csproj", "{101C7C6C-D59C-42EB-A272-602095A42579}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Person.EventBus.SubscriberWorker", "src\microservices\person\PersonDiary.Person.EventBus.SubscriberWorker\PersonDiary.Person.EventBus.SubscriberWorker.csproj", "{101C7C6C-D59C-42EB-A272-602095A42579}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Person.EventBus", "src\microservices\person\PersonDiary.Person.EventBus\PersonDiary.Person.EventBus.csproj", "{A8B6110A-7E8D-45D2-B4AA-3701CE3795A2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Test.RabbitMq.Emitter", "tests\PersonDiary.Test.RabbitMq.Emitter\PersonDiary.Test.RabbitMq.Emitter.csproj", "{81074CDC-F494-4AD2-B08C-A20AEBF88C49}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Test.RabbitMq.Receiver", "tests\PersonDiary.Test.RabbitMq.Receiver\PersonDiary.Test.RabbitMq.Receiver.csproj", "{A80F659A-9CAC-448F-8319-82AC53D64F51}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.GateWay.ApiClient", "src\PersonDiary.GateWay.ApiClient\PersonDiary.GateWay.ApiClient.csproj", "{1D648E1B-9432-4F43-82B8-31229BF72EEC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.GateWay.Dto", "src\PersonDiary.GateWay.Dto\PersonDiary.GateWay.Dto.csproj", "{8CD3D7C5-13E1-4342-84D3-24BB9F8D938F}"
 EndProject
@@ -66,6 +64,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Person.Business", "src\microservices\person\PersonDiary.Person.Business\PersonDiary.Person.Business.csproj", "{7E42A475-87BA-42EF-A8BC-A206980A9C57}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Person.DataAccess", "src\microservices\person\PersonDiary.Person.DataAccess\PersonDiary.Person.DataAccess.csproj", "{E523933D-BA0B-4725-A265-1C9CC82DAF6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Lifeevent.ApiClient", "src\microservices\lifeevent\PersonDiary.Lifeevent.ApiClient\PersonDiary.Lifeevent.ApiClient.csproj", "{C65B5E72-357B-47A1-8145-C35EB2286814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Person.ApiClient", "src\microservices\person\PersonDiary.Person.ApiClient\PersonDiary.Person.ApiClient.csproj", "{DC5253E3-B98F-4A5C-9209-E3A16495D135}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,10 +167,6 @@ Global
 		{A80F659A-9CAC-448F-8319-82AC53D64F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A80F659A-9CAC-448F-8319-82AC53D64F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A80F659A-9CAC-448F-8319-82AC53D64F51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D648E1B-9432-4F43-82B8-31229BF72EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D648E1B-9432-4F43-82B8-31229BF72EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D648E1B-9432-4F43-82B8-31229BF72EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D648E1B-9432-4F43-82B8-31229BF72EEC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CD3D7C5-13E1-4342-84D3-24BB9F8D938F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8CD3D7C5-13E1-4342-84D3-24BB9F8D938F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CD3D7C5-13E1-4342-84D3-24BB9F8D938F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -185,6 +183,14 @@ Global
 		{E523933D-BA0B-4725-A265-1C9CC82DAF6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E523933D-BA0B-4725-A265-1C9CC82DAF6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E523933D-BA0B-4725-A265-1C9CC82DAF6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C65B5E72-357B-47A1-8145-C35EB2286814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C65B5E72-357B-47A1-8145-C35EB2286814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C65B5E72-357B-47A1-8145-C35EB2286814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C65B5E72-357B-47A1-8145-C35EB2286814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC5253E3-B98F-4A5C-9209-E3A16495D135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC5253E3-B98F-4A5C-9209-E3A16495D135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC5253E3-B98F-4A5C-9209-E3A16495D135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC5253E3-B98F-4A5C-9209-E3A16495D135}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -213,6 +219,8 @@ Global
 		{F23FA4C4-8726-4FE3-B4C9-69D70F373DBA} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
 		{7E42A475-87BA-42EF-A8BC-A206980A9C57} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
 		{E523933D-BA0B-4725-A265-1C9CC82DAF6D} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
+		{C65B5E72-357B-47A1-8145-C35EB2286814} = {F7762B28-E881-4BD6-BABB-0303DE2E3591}
+		{DC5253E3-B98F-4A5C-9209-E3A16495D135} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AAC8C9B1-161C-4C87-B2CE-D7C53C230A5D}

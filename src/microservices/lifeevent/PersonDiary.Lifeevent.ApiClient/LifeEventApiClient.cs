@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
-using PersonDiary.GateWay.Dto;
 using PersonDiary.Infrastructure.Consul;
 using PersonDiary.Infrastructure.Domain.ApiClient;
 using PersonDiary.Infrastructure.Domain.HttpApiClients;
 using PersonDiary.Infrastructure.Domain.Settings;
 using PersonDiary.Infrastructure.HttpApiClient;
+using PersonDiary.Person.Dto;
 
-namespace PersonDiary.GateWay.ApiClient
+namespace PersonDiary.Lifeevent.ApiClient
 {
     public class LifeEventApiClient : BaseApiClient, ILifeEventApiClient
     {
@@ -37,7 +37,7 @@ namespace PersonDiary.GateWay.ApiClient
             throw new System.NotImplementedException();
         }
 
-        public Task<string> SaveOrUpdate(GateWayUpdateLifeEventDto lifeEvent)
+        public Task<string> SaveOrUpdate(GateWayUpdateLifeEventDto gateWayUpdateLifeEventDto)
         {
             throw new System.NotImplementedException();
         }

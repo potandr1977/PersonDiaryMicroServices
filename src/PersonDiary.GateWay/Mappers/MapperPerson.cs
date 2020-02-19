@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using PersonDiary.GateWay.Dto;
 using PersonDiary.Person.Dto;
 
-namespace PersonDiary.GateWay.Mappers
+namespace PersonDiary.Person.Mappers
 {
     public static class MapperPerson
     {

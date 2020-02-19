@@ -1,6 +1,6 @@
 ﻿﻿using System.Collections.Generic;
 
-namespace PersonDiary.GateWay.Dto
+namespace PersonDiary.Person.Dto
 {
     public class GateWayGetPersonsResponseDto
     {
