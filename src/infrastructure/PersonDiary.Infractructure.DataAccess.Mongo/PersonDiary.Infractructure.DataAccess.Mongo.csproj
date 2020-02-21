@@ -8,4 +8,12 @@
     <PackageReference Include="EasyNetQ" Version="3.7.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Class1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

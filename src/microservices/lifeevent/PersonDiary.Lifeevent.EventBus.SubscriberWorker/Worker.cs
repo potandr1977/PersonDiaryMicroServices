@@ -1,37 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PersonDiary.Infrastructure.Domain.EventBus.Events;
-using PersonDiary.Person.ApiClient;
-using PersonDiary.Person.Domain.EventBus;
+using PersonDiary.Lifeevent.ApiClient;
+using PersonDiary.Lifeevent.Domain.EventBus;
+using PersonDiary.Lifeevent.Dto;
 using PersonDiary.Person.Dto;
 
-namespace PersonDiary.Person.EventBus.SubscriberWorker
+namespace PersonDiary.Lifeevent.EventBus.ConsumerWorker
 {
     public class Worker : BackgroundService
     {
-        private readonly ILogger<Worker> logger;
-        private readonly IPersonSubscriberFactory personSubscriberFactory;
-        private readonly IPersonApiClient personApiClient;
+        private readonly ILifeEventSubscriberFactory lifeEventSubscriberFactory;
+        private readonly ILifeEventApiClient lifeEventApiClient;
         
-        public Worker(ILogger<Worker> logger , 
-            IPersonSubscriberFactory personSubscriberFactory,
-            IPersonApiClient personApiClient
-            )
+        private readonly ILogger<Worker> logger;
+
+        public Worker(ILogger<Worker> logger,
+            ILifeEventSubscriberFactory lifeEventSubscriberFactory,
+            ILifeEventApiClient lifeEventApiClient)
         {
+            this.lifeEventSubscriberFactory = lifeEventSubscriberFactory;
+            this.lifeEventApiClient = lifeEventApiClient;
             this.logger = logger;
-            this.personSubscriberFactory = personSubscriberFactory;
-            this.personApiClient = personApiClient;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var subscriber = personSubscriberFactory.Create<LifeEventCreate>();
+            var subscriber = lifeEventSubscriberFactory.Create<PersonCreate>();
             
             subscriber.Subscribe(lifeEventCreate =>
             {
-                personApiClient.LifeEventCreatedAsync(new LifeEventCreateDto()
+                
+                lifeEventApiClient.PersonCreatedAsync(new PersonCreateDto()
                 {
                     Id = lifeEventCreate.Id
                 }); //call and forget

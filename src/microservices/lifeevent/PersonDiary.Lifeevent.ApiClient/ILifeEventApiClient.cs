@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using PersonDiary.Lifeevent.Dto;
 using PersonDiary.Person.Dto;
 
 namespace PersonDiary.Lifeevent.ApiClient
@@ -12,5 +13,7 @@ namespace PersonDiary.Lifeevent.ApiClient
         Task<string> SaveOrUpdate(GateWayUpdateLifeEventDto gateWayUpdateLifeEventDto);
 
         Task<string> Delete(int id);
+        
+        Task PersonCreatedAsync(PersonCreateDto personCreateDto);
     }
 }

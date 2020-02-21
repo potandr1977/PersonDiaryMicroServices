@@ -1,6 +1,6 @@
 ﻿namespace PersonDiary.Person.Dto
 {
-    public class LifeEventCreatedDto
+    public class LifeEventCreateDto
     {
         public int Id { get; set; }
     }

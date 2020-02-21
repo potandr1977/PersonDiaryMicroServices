@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PersonDiary.Infractructure.Settings;
@@ -11,11 +15,12 @@ using PersonDiary.Infrastructure.Domain.Settings;
 using PersonDiary.Infrastructure.HttpApiClient;
 using PersonDiary.Infrastructure.HttpApiClient.Helpers;
 using PersonDiary.Infrastucture.Domain.DataAccess;
+using PersonDiary.Lifeevent.ApiClient;
+using PersonDiary.Lifeevent.Domain.EventBus;
 using PersonDiary.Person.ApiClient;
-using PersonDiary.Person.Domain.EventBus;
-using PersonDiary.Person.EventBus;
+using PersonDiary.Lifeevent.EventBus;
 
-namespace PersonDiary.Person.EventBus.SubscriberWorker
+namespace PersonDiary.Lifeevent.EventBus.ConsumerWorker
 {
     public class Program
     {
@@ -34,8 +39,8 @@ namespace PersonDiary.Person.EventBus.SubscriberWorker
                     services.AddSingleton<IUriCreator, UriCreator>();
                     services.AddSingleton<IResponseParser, ResponseParser>();  
                     services.AddSingleton<IHttpRequestExecutor, HttpRequestExecutor>();
-                    services.AddSingleton<IPersonApiClient, PersonApiClient>();
-                    services.AddSingleton<IPersonSubscriberFactory, PersonSubscriberFactory>();
+                    services.AddSingleton<ILifeEventApiClient, LifeEventApiClient>();
+                    services.AddSingleton<ILifeEventSubscriberFactory, LifeEventSubscriberFactory>();
                     
                     services.AddHostedService<Worker>();
                 });

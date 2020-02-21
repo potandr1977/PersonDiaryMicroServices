@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UserSecretsId>dotnet-PersonDiary.Lifeevent.EventBus.ConsumerWorker-BDF83984-2AD2-4737-9FB2-64D4DB61CC72</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="EasyNetQ" Version="3.7.1" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infractructure.Settings\PersonDiary.Infractructure.Settings.csproj" />
+      <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.ApiClient\PersonDiary.Infrastructure.ApiClient.csproj" />
+      <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.Cache\PersonDiary.Infrastructure.Cache.csproj" />
+      <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
+      <ProjectReference Include="..\..\person\PersonDiary.Person.ApiClient\PersonDiary.Person.ApiClient.csproj" />
+      <ProjectReference Include="..\PersonDiary.Lifeevent.ApiClient\PersonDiary.Lifeevent.ApiClient.csproj" />
+      <ProjectReference Include="..\PersonDiary.Lifeevent.Domain\PersonDiary.Lifeevent.Domain.csproj" />
+      <ProjectReference Include="..\PersonDiary.Lifeevent.EventBus\PersonDiary.Lifeevent.EventBus.csproj" />
+    </ItemGroup>
+</Project>

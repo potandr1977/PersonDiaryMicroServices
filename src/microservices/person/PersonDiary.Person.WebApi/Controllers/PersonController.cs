@@ -65,5 +65,12 @@ namespace PersonDiary.Person.WebApi.Controllers
             
             return personService.DeleteByIdAsync(deletePersonRequestDto.Id);
         }
+        
+        [HttpPost]
+        [Route("LifeEventCreated")]
+        public Task LifeEventCreatedAsync([FromBody]  LifeEventCreateDto lifeEventCreateDto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

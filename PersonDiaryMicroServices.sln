@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.ConsulKeyValueS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Test", "tests\PersonDiary.Test\PersonDiary.Test\PersonDiary.Test.csproj", "{C7D15EE8-5249-4808-AF3D-920C83827081}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.EventBus.ConsumerWorker", "src\microservices\lifeevent\PersonDiary.Lifeevent.EventBus.ConsumerWorker\PersonDiary.Lifeevent.EventBus.ConsumerWorker.csproj", "{519DAFF8-0028-495A-BA35-BAD9F7CB507C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Lifeevent.EventBus.SubscriberWorker", "src\microservices\lifeevent\PersonDiary.Lifeevent.EventBus.SubscriberWorker\PersonDiary.Lifeevent.EventBus.SubscriberWorker.csproj", "{519DAFF8-0028-495A-BA35-BAD9F7CB507C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonDiary.Person.EventBus.SubscriberWorker", "src\microservices\person\PersonDiary.Person.EventBus.SubscriberWorker\PersonDiary.Person.EventBus.SubscriberWorker.csproj", "{101C7C6C-D59C-42EB-A272-602095A42579}"
 EndProject

@@ -4,6 +4,7 @@ using PersonDiary.Infrastructure.Domain.ApiClient;
 using PersonDiary.Infrastructure.Domain.HttpApiClients;
 using PersonDiary.Infrastructure.Domain.Settings;
 using PersonDiary.Infrastructure.HttpApiClient;
+using PersonDiary.Lifeevent.Dto;
 using PersonDiary.Person.Dto;
 
 namespace PersonDiary.Lifeevent.ApiClient
@@ -25,7 +26,7 @@ namespace PersonDiary.Lifeevent.ApiClient
         }
         protected override string GetApiEndpoint() 
         {
-            return settingsRepository.Get(SettingKeys.PersonsServiceUrl);
+            return settingsRepository.Get(SettingKeys.LifeEventsServiceUrl);
         }
         public Task GetLifeEvent(int personId)
         {
@@ -43,6 +44,11 @@ namespace PersonDiary.Lifeevent.ApiClient
         }
 
         public Task<string> Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task PersonCreatedAsync(PersonCreateDto personCreateDto)
         {
             throw new System.NotImplementedException();
         }
