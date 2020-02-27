@@ -9,21 +9,11 @@ namespace PersonDiary.Infrastructure.Consul
     public class ConsulApiClient : BaseApiClient, IConsulApiClient
     {
         private const string ConsulEndpointUrl = "http://localhost:8500/v1/kv/";
-
         private const string ConsulPersonsKeyUrl = "PDdev/Persons/url";
-        private const string ConsulSetPersonsKeyValue = "http://localhost:49442";
-
         private const string ConsulLifeeventsKeyUrl = "PDdev/Lifeevents/url";
-        private const string ConsulLifeeventsKeyValue = "http://localhost:65354";
-        
         private const string ConsulLifeEventConnectionStringUrl = "PDdev/Lifeevents/ConnectionString";
-        private const string ConsulLifeEventConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=LifeEvents;Integrated Security=True";
-        
         private const string ConsulPersonsConnectionStringUrl = "PDdev/Persons/ConnectionString";
-        private const string ConsulPersonsConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=Persons;Integrated Security=True";
-        
         private const string ConsulPersonEventBusConnectionStringUrl = "PDdev/Persons/EventBusConnectionString";
-        private const string ConsulPersonEventBusConnectionStringValue = "host=localhost";
         
         public ConsulApiClient
         (
@@ -40,12 +30,12 @@ namespace PersonDiary.Infrastructure.Consul
             return ConsulEndpointUrl;
         }
 
-        public Task SetPersonsServiceUrlValueAsync()
+        public Task SetPersonsServiceUrlValueAsync(string ConsulSetPersonsKeyValue)
         {
             return PutAsync($"{ConsulPersonsKeyUrl}", ConsulSetPersonsKeyValue);
         }
 
-        public Task SetLifeEventsServiceUrlValueAsync()
+        public Task SetLifeEventsServiceUrlValueAsync(string ConsulLifeeventsKeyValue)
         {
             return PutAsync($"{ConsulLifeeventsKeyUrl}", ConsulLifeeventsKeyValue);
         }
@@ -60,11 +50,11 @@ namespace PersonDiary.Infrastructure.Consul
             return GetAsync<string>($"{ConsulLifeeventsKeyUrl}?raw");
         }
         
-        public Task SetPersonServiceConnectionStringAsync()
+        public Task SetPersonServiceConnectionStringAsync(string ConsulPersonsConnectionStringValue)
         {
             return PutAsync($"{ConsulPersonsConnectionStringUrl}", ConsulPersonsConnectionStringValue);
         }
-        public Task SetLifeEventServiceConnectionStringAsync()
+        public Task SetLifeEventServiceConnectionStringAsync(string ConsulLifeEventConnectionStringValue)
         {
             return PutAsync($"{ConsulLifeEventConnectionStringUrl}", ConsulLifeEventConnectionStringValue);
         }
@@ -79,7 +69,7 @@ namespace PersonDiary.Infrastructure.Consul
             return GetAsync<string>($"{ConsulPersonsConnectionStringUrl}?raw");
         }
 
-        public Task SetPersonEventBusConnectionStringAsync()
+        public Task SetPersonEventBusConnectionStringAsync(string ConsulPersonEventBusConnectionStringValue)
         {
             return PutAsync($"{ConsulPersonEventBusConnectionStringUrl}", ConsulPersonEventBusConnectionStringValue);
         }

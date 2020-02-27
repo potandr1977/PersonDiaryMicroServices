@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>PersonDiary.Person.ApiClient</AssemblyName>
+        <RootNamespace>PersonDiary.Person.ApiClient</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.Consul\PersonDiary.Infrastructure.Consul.csproj" />
+      <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastucture.Domain\PersonDiary.Infrastructure.Domain.csproj" />
+      <ProjectReference Include="..\PersonDiary.Person.Dto\PersonDiary.Person.Dto.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -18,6 +18,12 @@ namespace PersonDiary.ConsulKeyValueSetter
 {
     class Program
     {
+        private const string ConsulSetPersonsKeyValue = "https://localhost:44330";
+        private const string ConsulLifeeventsKeyValue = "https://localhost:44378/";
+        private const string ConsulLifeEventConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=LifeEvents;Integrated Security=True";
+        private const string ConsulPersonsConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=Persons;Integrated Security=True";
+        private const string ConsulPersonEventBusConnectionStringValue = "host=localhost";
+
         private static async Task Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
@@ -42,13 +48,16 @@ namespace PersonDiary.ConsulKeyValueSetter
 
             var consulApiClient = serviceProvider.GetService<IConsulApiClient>();
             
-            var personTask = consulApiClient.SetPersonsServiceUrlValueAsync();
-            var lifeEventTask = consulApiClient.SetLifeEventsServiceUrlValueAsync();
+            var personTask = consulApiClient.SetPersonsServiceUrlValueAsync(ConsulSetPersonsKeyValue);
+            var lifeEventTask = consulApiClient.SetLifeEventsServiceUrlValueAsync(ConsulLifeeventsKeyValue);
 
-            var personConnectionStringTask = consulApiClient.SetPersonServiceConnectionStringAsync();
-            var lifeConnectionStringEventTask = consulApiClient.SetLifeEventServiceConnectionStringAsync();
+            var personConnectionStringTask = 
+                consulApiClient.SetPersonServiceConnectionStringAsync(ConsulPersonsConnectionStringValue);
+            var lifeConnectionStringEventTask = 
+                consulApiClient.SetLifeEventServiceConnectionStringAsync(ConsulLifeEventConnectionStringValue);
 
-            var eventBusPersonConnectionStringTask = consulApiClient.SetPersonEventBusConnectionStringAsync();
+            var eventBusPersonConnectionStringTask = 
+                consulApiClient.SetPersonEventBusConnectionStringAsync(ConsulPersonEventBusConnectionStringValue);
 
             await Task.WhenAll(
                 personTask, 
