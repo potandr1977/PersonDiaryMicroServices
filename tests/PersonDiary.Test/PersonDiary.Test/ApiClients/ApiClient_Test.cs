@@ -12,6 +12,8 @@ using PersonDiary.Infrastructure.Domain.Settings;
 using PersonDiary.Infrastructure.HttpApiClient;
 using PersonDiary.Infrastructure.HttpApiClient.Helpers;
 using PersonDiary.Person.Dto;
+using PersonDiary.Infrastructure.Domain.Cache;
+using PersonDiary.Infrastructure.Cache;
 
 namespace PersonDiary.Test.ApiClients
 {
@@ -23,10 +25,13 @@ namespace PersonDiary.Test.ApiClients
         public void Setup()
         {
             var serviceProvider = new ServiceCollection()
-                .AddSingleton<ISettingsRepository, SettingsRepository>()
                 .AddSingleton<IHttpRequestExecutor, HttpRequestExecutor>()
                 .AddSingleton<IUriCreator, UriCreator>()
                 .AddSingleton<IResponseParser, ResponseParser>()
+                .AddSingleton<IConsulApiClient, ConsulApiClient>()
+                .AddSingleton<IConsulSettingsWatcher, ConsulSettingsWatcher>()
+                .AddSingleton<ICacheStore, CacheStore>()
+                .AddSingleton<ISettingsRepository, SettingsRepository>()
                 .AddSingleton<IPersonApiClient, PersonApiClient>()
                 .BuildServiceProvider();
            
@@ -44,6 +49,16 @@ namespace PersonDiary.Test.ApiClients
                     Surname= "Surname1", 
                     HasFile = true  
                 }
+            });
+            Assert.Pass();
+        }
+        [Test]
+        public async Task GetPersons()
+        {
+            await personApiClient.GetPersonsAsync(new GetPersonsRequestDto
+            {
+                PageNo=1,
+                PageSize=100
             });
             Assert.Pass();
         }

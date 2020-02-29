@@ -8,13 +8,14 @@ using
 		) as ins (Id,Name,SurName,HasFile)
 on (p.id = ins.id)
 when matched then update set
-					Id = ins.Id,
 					Name = ins.Name,
-					SurName = ins.SurName
+					SurName = ins.SurName,
+					HasFile = ins.HasFile
 when not matched then insert (Name,SurName,HasFile)
 					values
-						(ins.Id,
+						(
 						ins.Name,
 						ins.SurName,
 						ins.HasFile
-						);
+						)
+output IIF($action='INSERT', Inserted.Id, ins.id);

@@ -20,8 +20,8 @@ namespace PersonDiary.ConsulKeyValueSetter
     {
         private const string ConsulSetPersonsKeyValue = "https://localhost:44330";
         private const string ConsulLifeeventsKeyValue = "https://localhost:44378/";
-        private const string ConsulLifeEventConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=LifeEvents;Integrated Security=True";
-        private const string ConsulPersonsConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=Persons;Integrated Security=True";
+        private const string ConsulLifeEventConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=_LifeEvents;Integrated Security=True";
+        private const string ConsulPersonsConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=_Persons;Integrated Security=True";
         private const string ConsulPersonEventBusConnectionStringValue = "host=localhost";
 
         private static async Task Main(string[] args)

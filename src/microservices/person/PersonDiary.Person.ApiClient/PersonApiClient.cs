@@ -31,32 +31,32 @@ namespace PersonDiary.Person.ApiClient
         
         public Task<GetPersonResponseDto> GetPersonAsync(GetPersonRequestDto getPersonRequestDto)
         {
-            return GetAsync<GetPersonResponseDto>($"Person", getPersonRequestDto);
+            return GetAsync<GetPersonResponseDto>($"/Person/", getPersonRequestDto);
         }
 
         public Task<GetPersonsResponseDto> GetPersonsAsync(GetPersonsRequestDto getPersonsRequestDto)
         {
-           return GetAsync<GetPersonsResponseDto>($"Person", getPersonsRequestDto);
+           return GetAsync<GetPersonsResponseDto>("/Person/?json={pageNo:1,pageSize:100}");
         }
 
         public Task CreatePersonAsync(UpdatePersonRequestDto updatePersonRequestDto)
         {
-            return PostAsync($"Person",updatePersonRequestDto);
+            return PostAsync($"/Person/",updatePersonRequestDto);
         }
         
         public Task UpdatePersonAsync(UpdatePersonRequestDto updatePersonRequestDto)
         {
-            return PutAsync($"Person",new { id = updatePersonRequestDto });
+            return PutAsync($"/Person/",new { id = updatePersonRequestDto });
         }
 
         public Task DeletePersonAsync(DeletePersonRequestDto deletePersonRequestDto)
         {
-            return DeleteAsync($"Person",new { id = deletePersonRequestDto.Id });
+            return DeleteAsync($"/Person/",new { id = deletePersonRequestDto.Id });
         }
 
         public Task LifeEventCreatedAsync(LifeEventCreateDto lifeEventCreateDto)
         {
-            return PostAsync($"Person/LifeEventCreated", lifeEventCreateDto);
+            return PostAsync($"/Person/LifeEventCreated", lifeEventCreateDto);
         }
     }
 }

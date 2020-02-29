@@ -25,7 +25,7 @@ namespace PersonDiary.Infractructure.Settings
             settings = JsonConvert.DeserializeObject<IReadOnlyCollection<KeyValuePair<string, string>>>(settingsSerialized);
         }
 
-        public string Get(string name)
+        public virtual string Get(string name)
         {
             return settings.FirstOrDefault(p=>p.Key==name).Value;
         }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PersonDiary.Person.DataAccess.Queries {
+namespace PersonDiary.Person.DataAccess.Dao.Queries {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace PersonDiary.Person.DataAccess.Queries {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PersonDiary.Person.DataAccess.Queries.PersonDaoQueries", typeof(PersonDaoQueries).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PersonDiary.Person.DataAccess.Dao.Queries.PersonDaoQueries", typeof(PersonDaoQueries).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

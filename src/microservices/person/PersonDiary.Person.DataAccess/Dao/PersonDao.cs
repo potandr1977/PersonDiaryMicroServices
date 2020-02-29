@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using PersonDiary.Infrastucture.Domain.Models.DataAccess;
-using PersonDiary.Person.DataAccess.Queries;
+using PersonDiary.Person.DataAccess.Dao.Queries;
 using PersonDiary.Person.Domain.DataAccess;
 using PersonDiary.Person.Domain.DataAccess.Executor;
 using PersonDiary.Person.Domain.Models;
@@ -19,9 +19,9 @@ namespace PersonDiary.Person.DataAccess.Dao
         
         public Task<List<PersonModel>> GetAllAsync(int pageNo, int pageSize)
         {
-            var query = new QueryObject(PersonDaoQueries.GetAll,new { pageNo, pageSize});
-
-            return dbExecutor.QueryFirstOrDefaultAsync<List<PersonModel>>(query);
+            var query = new QueryObject(PersonDaoQueries.GetAll, new { pageNo, pageSize});
+            
+            return dbExecutor.QueryAsync<PersonModel>(query);
         }
         
         public Task<PersonModel> GetByIdAsync(int id)

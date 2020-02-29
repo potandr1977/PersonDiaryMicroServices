@@ -79,9 +79,6 @@ namespace PersonDiary.Person.WebApi
             }
 
             consulSettingsWatcher.CheckSettingsAsync();
-            var personConnectionString = dbExecutorRedis.GetValue(SettingKeys.ConnectionStringPerson);
-            
-            dbExecutorRedis.SetValue(SettingKeys.ConnectionString, personConnectionString);
             
             app.UseHttpsRedirection();
 

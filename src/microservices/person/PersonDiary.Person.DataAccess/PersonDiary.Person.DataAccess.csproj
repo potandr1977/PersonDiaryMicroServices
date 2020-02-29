@@ -15,6 +15,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Update="Dao\Queries\PersonDaoQueries.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>PersonDaoQueries.resx</DependentUpon>
+      </Compile>
       <Compile Update="Queries\PersonDaoQueries.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -23,6 +28,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Update="Dao\Queries\PersonDaoQueries.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>PersonDaoQueries.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
       <EmbeddedResource Update="Queries\PersonDaoQueries.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>PersonDaoQueries.Designer.cs</LastGenOutput>

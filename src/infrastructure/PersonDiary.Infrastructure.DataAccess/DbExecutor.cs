@@ -11,12 +11,8 @@ namespace PersonDiary.Infrastructure.DataAccess
 {
     public abstract class DbExecutor : IDbExecutor
     {
-        private readonly string connectionString;
+        protected string connectionString;
 
-        public DbExecutor(ISettingsRepository settingsRepository)
-        {
-            this.connectionString = settingsRepository.Get(SettingKeys.ConnectionString);
-        }
         public async Task<List<T>> QueryAsync<T>(QueryObject queryObject, QuerySetting settings = null)
         {
             using (var cnn = new SqlConnection(connectionString))
