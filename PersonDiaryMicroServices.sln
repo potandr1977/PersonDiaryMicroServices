@@ -73,6 +73,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5611DC9A-2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateway", "gateway", "{60C76F09-6F56-49B8-8BB3-F018FCB92879}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonDiary.Lifeevent.DataAccess", "src\microservices\lifeevent\PersonDiary.Lifeevent.DataAccess\PersonDiary.Lifeevent.DataAccess.csproj", "{35018245-0000-4EA3-AE08-78703C43E09F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -195,6 +197,10 @@ Global
 		{DC5253E3-B98F-4A5C-9209-E3A16495D135}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC5253E3-B98F-4A5C-9209-E3A16495D135}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC5253E3-B98F-4A5C-9209-E3A16495D135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35018245-0000-4EA3-AE08-78703C43E09F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35018245-0000-4EA3-AE08-78703C43E09F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35018245-0000-4EA3-AE08-78703C43E09F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35018245-0000-4EA3-AE08-78703C43E09F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -230,6 +236,7 @@ Global
 		{E523933D-BA0B-4725-A265-1C9CC82DAF6D} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
 		{C65B5E72-357B-47A1-8145-C35EB2286814} = {F7762B28-E881-4BD6-BABB-0303DE2E3591}
 		{DC5253E3-B98F-4A5C-9209-E3A16495D135} = {99F6FFD7-765E-44A3-8430-4ACAD9462747}
+		{35018245-0000-4EA3-AE08-78703C43E09F} = {F7762B28-E881-4BD6-BABB-0303DE2E3591}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AAC8C9B1-161C-4C87-B2CE-D7C53C230A5D}
