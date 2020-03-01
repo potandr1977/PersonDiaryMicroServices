@@ -3,7 +3,7 @@ During this sample I'm trying to handle microservices architecture on DDD princi
 I've not got enough time for this, that is why most imlemented is Person microservice and gateway for now, 
 the LifeEvent service will be implemented later.
 
-The legend of sample is following: to implement persons diary, where will be listed his most significant life events 
+The legend of sample is following: to implement persons diary, where will be listed its most significant life events 
 (very simple domain with two entities)
 
 
