@@ -5,18 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="Dao\Queries\PersonDaoQueries.Designer.cs">
-      <DependentUpon>PersonDaoQueries.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
+    <Folder Include="Dao\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Dao\Queries\PersonDaoQueries.resx">
-      <LastGenOutput>PersonDaoQueries.Designer.cs</LastGenOutput>
-      <Generator>ResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
+    <ProjectReference Include="..\..\..\infrastructure\PersonDiary.Infrastructure.DataAccess\PersonDiary.Infrastructure.DataAccess.csproj" />
+    <ProjectReference Include="..\PersonDiary.Lifeevent.Domain\PersonDiary.Lifeevent.Domain.csproj" />
   </ItemGroup>
 
 </Project>

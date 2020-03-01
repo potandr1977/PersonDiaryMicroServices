@@ -6,16 +6,10 @@
 
   <ItemGroup>
     <Compile Remove="Business\**" />
-    <Compile Remove="DataAccess\**" />
-    <Compile Remove="Models\**" />
     <Compile Remove="Repositories\**" />
     <EmbeddedResource Remove="Business\**" />
-    <EmbeddedResource Remove="DataAccess\**" />
-    <EmbeddedResource Remove="Models\**" />
     <EmbeddedResource Remove="Repositories\**" />
     <None Remove="Business\**" />
-    <None Remove="DataAccess\**" />
-    <None Remove="Models\**" />
     <None Remove="Repositories\**" />
   </ItemGroup>
 
