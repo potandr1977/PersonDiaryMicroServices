@@ -33,12 +33,10 @@ namespace PersonDiary.Infrastructure.HttpApiClient
         {
             CheckDisposed();
 
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, uri))
-            {
-                var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
+            var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
 
-                return result;
-            }
+            return result;
         }
 
         public async Task<string> PostAsync(
@@ -48,12 +46,10 @@ namespace PersonDiary.Infrastructure.HttpApiClient
         {
             CheckDisposed();
 
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri))
-            {
-                var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+            var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
 
-                return result;
-            }
+            return result;
         }
 
         public async Task<string> PostAsync<TRequest>(
@@ -65,13 +61,11 @@ namespace PersonDiary.Infrastructure.HttpApiClient
         {
             CheckDisposed();
 
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri))
-            {
-                requestMessage.Content = CreateJsonContent(data);
-                var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+            requestMessage.Content = CreateJsonContent(data);
+            var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
 
-                return result;
-            }
+            return result;
         }
 
         public async Task<string> PutAsync(
@@ -81,12 +75,10 @@ namespace PersonDiary.Infrastructure.HttpApiClient
         {
             CheckDisposed();
 
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Put, uri))
-            {
-                var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Put, uri);
+            var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
 
-                return result;
-            }
+            return result;
         }
 
         public async Task<string> PutAsync<TRequest>(
@@ -98,13 +90,10 @@ namespace PersonDiary.Infrastructure.HttpApiClient
         {
             CheckDisposed();
 
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Put, uri))
-            {
-                requestMessage.Content = CreateJsonContent(data);
-                var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Put, uri) {Content = CreateJsonContent(data)};
+            var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
 
-                return result;
-            }
+            return result;
         }
 
         private async Task<string> SendAsync(
@@ -120,16 +109,11 @@ namespace PersonDiary.Infrastructure.HttpApiClient
                 setting = new HttpQuerySetting();
             }
 
-            using (var cts = new CancellationTokenSource(setting.Timeout))
-            {
-                using (var response = await httpClient.SendAsync(requestMessage, cts.Token).ConfigureAwait(false))
-                {
-                    //response.EnsureSuccessStatusCodeEx();
-                    var result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            using var cts = new CancellationTokenSource(setting.Timeout);
+            using var response = await httpClient.SendAsync(requestMessage, cts.Token).ConfigureAwait(false);
+            var result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                    return result;
-                }
-            }
+            return result;
         }
 
         public async Task<byte[]> SendFileAsync<TRequest>(
@@ -146,35 +130,26 @@ namespace PersonDiary.Infrastructure.HttpApiClient
                 setting = new HttpQuerySetting();
             }
 
-            using (var cts = new CancellationTokenSource(setting.Timeout))
+            using var cts = new CancellationTokenSource(setting.Timeout);
+            using var requestMessage = new HttpRequestMessage(httpMethod, uri) {Version = HttpVersion.Version11};
+            AddHeaders(requestMessage, headers);
+
+            if (null != data)
             {
-                using (var requestMessage = new HttpRequestMessage(httpMethod, uri))
-                {
-                    requestMessage.Version = HttpVersion.Version11;
-                    AddHeaders(requestMessage, headers);
-
-                    if (null != data)
-                    {
-                        requestMessage.Content = CreateJsonContent(data);
-                    }
-
-                    using (var response = await httpClient.SendAsync(requestMessage, cts.Token).ConfigureAwait(false))
-                    {
-                        response.EnsureSuccessStatusCode();
-                        using (var result = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                        {
-                            var stream = new MemoryStream();
-                            await result.CopyToAsync(stream).ConfigureAwait(false);
-
-                            stream.Position = 0;
-
-                            var httpContentHeaders = response.Content.Headers;
-
-                            return stream.ToArray();
-                        }
-                    }
-                }
+                requestMessage.Content = CreateJsonContent(data);
             }
+
+            using var response = await httpClient.SendAsync(requestMessage, cts.Token).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+            await using var result = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+            var stream = new MemoryStream();
+            await result.CopyToAsync(stream, cts.Token).ConfigureAwait(false);
+
+            stream.Position = 0;
+
+            var httpContentHeaders = response.Content.Headers;
+
+            return stream.ToArray();
         }
 
         public async Task<string> UploadFileAsync(
@@ -185,19 +160,14 @@ namespace PersonDiary.Infrastructure.HttpApiClient
         {
             CheckDisposed();
 
-            using (var requestContent = new MultipartFormDataContent())
-            {
-                var streamContent = MapToStreamContent(file);
-                requestContent.Add(streamContent, "file", file.FileName);
+            using var requestContent = new MultipartFormDataContent();
+            var streamContent = MapToStreamContent(file);
+            requestContent.Add(streamContent, "file", file.FileName);
 
-                using (var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri))
-                {
-                    requestMessage.Content = requestContent;
-                    var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri) {Content = requestContent};
+            var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
 
-                    return result;
-                }
-            }
+            return result;
         }
 
         public async Task<string> UploadFileAsync<TRequest>(
@@ -209,22 +179,17 @@ namespace PersonDiary.Infrastructure.HttpApiClient
         {
             CheckDisposed();
 
-            using (var requestContent = new MultipartFormDataContent())
-            {
-                var streamContent = MapToStreamContent(file);
-                requestContent.Add(streamContent, "file", file.FileName);
+            using var requestContent = new MultipartFormDataContent();
+            var streamContent = MapToStreamContent(file);
+            requestContent.Add(streamContent, "file", file.FileName);
 
-                var jsonContent = CreateJsonContent(data);
-                requestContent.Add(jsonContent, "data");
+            var jsonContent = CreateJsonContent(data);
+            requestContent.Add(jsonContent, "data");
 
-                using (var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri))
-                {
-                    requestMessage.Content = requestContent;
-                    var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri) {Content = requestContent};
+            var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
 
-                    return result;
-                }
-            }
+            return result;
         }
 
         public async Task<string> DeleteAsync(
@@ -234,10 +199,8 @@ namespace PersonDiary.Infrastructure.HttpApiClient
         {
             CheckDisposed();
 
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Delete, uri))
-            {
-                return await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
-            }
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Delete, uri);
+            return await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
         }
 
         public async Task<string> DeleteAsync<TRequest>(
@@ -249,13 +212,13 @@ namespace PersonDiary.Infrastructure.HttpApiClient
         {
             CheckDisposed();
 
-            using (var requestMessage = new HttpRequestMessage(HttpMethod.Delete, uri))
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Delete, uri)
             {
-                requestMessage.Content = CreateJsonContent(data);
-                var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
+                Content = CreateJsonContent(data)
+            };
+            var result = await SendAsync(requestMessage, headers, setting).ConfigureAwait(false);
 
-                return result;
-            }
+            return result;
         }
 
         public void Dispose()
