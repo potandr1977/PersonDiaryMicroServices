@@ -31,32 +31,33 @@ namespace PersonDiary.Person.ApiClient
         
         public Task<GetPersonResponseDto> GetPersonAsync(GetPersonRequestDto getPersonRequestDto)
         {
-            return GetAsync<GetPersonResponseDto>($"/Person/", getPersonRequestDto);
+            return GetAsync<GetPersonResponseDto>($"api/Person/", getPersonRequestDto);
         }
 
         public Task<GetPersonsResponseDto> GetPersonsAsync(GetPersonsRequestDto getPersonsRequestDto)
         {
-           return GetAsync<GetPersonsResponseDto>("/Person/?json={pageNo:1,pageSize:100}");
+           return GetAsync<GetPersonsResponseDto>(
+               $"/api/person/?json={{pageNo: {getPersonsRequestDto.PageNo} ,pageSize:{getPersonsRequestDto.PageSize}}}");
         }
 
         public Task CreatePersonAsync(UpdatePersonRequestDto updatePersonRequestDto)
         {
-            return PostAsync($"/Person/",updatePersonRequestDto);
+            return PostAsync($"api/person/",updatePersonRequestDto);
         }
         
         public Task UpdatePersonAsync(UpdatePersonRequestDto updatePersonRequestDto)
         {
-            return PutAsync($"/Person/",new { id = updatePersonRequestDto });
+            return PutAsync($"api/person/",new { id = updatePersonRequestDto });
         }
 
         public Task DeletePersonAsync(DeletePersonRequestDto deletePersonRequestDto)
         {
-            return DeleteAsync($"/Person/",new { id = deletePersonRequestDto.Id });
+            return DeleteAsync($"api/person/",new { id = deletePersonRequestDto.Id });
         }
 
         public Task LifeEventCreatedAsync(LifeEventCreateDto lifeEventCreateDto)
         {
-            return PostAsync($"/Person/LifeEventCreated", lifeEventCreateDto);
+            return PostAsync($"api/person/lifeeventcreated", lifeEventCreateDto);
         }
     }
 }

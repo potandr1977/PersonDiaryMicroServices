@@ -14,6 +14,8 @@ using PersonDiary.Infrastructure.HttpApiClient.Helpers;
 using PersonDiary.Person.Dto;
 using PersonDiary.Infrastructure.Domain.Cache;
 using PersonDiary.Infrastructure.Cache;
+using PersonDiary.Infrastucture.Domain.DataAccess;
+using PersonDiary.Infrastructure.Cache.Redis;
 
 namespace PersonDiary.Test.ApiClients
 {
@@ -25,11 +27,12 @@ namespace PersonDiary.Test.ApiClients
         public void Setup()
         {
             var serviceProvider = new ServiceCollection()
-                .AddSingleton<IHttpRequestExecutor, HttpRequestExecutor>()
+                  .AddSingleton<IHttpRequestExecutor, HttpRequestExecutor>()
                 .AddSingleton<IUriCreator, UriCreator>()
                 .AddSingleton<IResponseParser, ResponseParser>()
                 .AddSingleton<IConsulApiClient, ConsulApiClient>()
                 .AddSingleton<IConsulSettingsWatcher, ConsulSettingsWatcher>()
+                .AddSingleton<IDbExecutorRedis, DbExecutorRedis>()
                 .AddSingleton<ICacheStore, CacheStore>()
                 .AddSingleton<ISettingsRepository, SettingsRepository>()
                 .AddSingleton<IPersonApiClient, PersonApiClient>()
