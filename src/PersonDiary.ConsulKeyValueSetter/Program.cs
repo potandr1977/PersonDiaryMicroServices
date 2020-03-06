@@ -19,7 +19,7 @@ namespace PersonDiary.ConsulKeyValueSetter
     class Program
     {
         private const string ConsulSetPersonsKeyValue = "https://localhost:44330";
-        private const string ConsulLifeeventsKeyValue = "https://localhost:44378/";
+        private const string ConsulLifeEventsKeyValue = "https://localhost:44378/";
         private const string ConsulLifeEventConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=_LifeEvents;Integrated Security=True";
         private const string ConsulPersonsConnectionStringValue = "Data Source=(local)\\sql2016;Initial Catalog=_Persons;Integrated Security=True";
         private const string ConsulPersonEventBusConnectionStringValue = "host=localhost";
@@ -45,11 +45,12 @@ namespace PersonDiary.ConsulKeyValueSetter
                 .GetService<ILoggerFactory>()
                 .CreateLogger<Program>();
             logger.LogDebug("Starting application");
-
+            
+            
             var consulApiClient = serviceProvider.GetService<IConsulApiClient>();
             
             var personTask = consulApiClient.SetPersonsServiceUrlValueAsync(ConsulSetPersonsKeyValue);
-            var lifeEventTask = consulApiClient.SetLifeEventsServiceUrlValueAsync(ConsulLifeeventsKeyValue);
+            var lifeEventTask = consulApiClient.SetLifeEventsServiceUrlValueAsync(ConsulLifeEventsKeyValue);
 
             var personConnectionStringTask = 
                 consulApiClient.SetPersonServiceConnectionStringAsync(ConsulPersonsConnectionStringValue);
