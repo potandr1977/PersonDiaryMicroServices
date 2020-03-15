@@ -1,6 +1,6 @@
 ﻿using PersonDiary.Infrastructure.Domain.EventBus;
 
-namespace PersonDiary.Person.Domain.EventBus
+namespace PersonDiary.Person.EventBus.Abstractions
 {
     public interface IPersonSubscriberFactory : ISubscriberFactory
     {
