@@ -4,7 +4,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PersonDiary.Infrastructure.Domain.EventBus.Events;
 using PersonDiary.Person.ApiClient;
-using PersonDiary.Person.Domain.EventBus;
 using PersonDiary.Person.Dto;
 
 namespace PersonDiary.Person.EventBus.SubscriberWorker

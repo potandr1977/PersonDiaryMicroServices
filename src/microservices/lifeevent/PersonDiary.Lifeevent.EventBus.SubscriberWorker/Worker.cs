@@ -7,7 +7,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PersonDiary.Infrastructure.Domain.EventBus.Events;
 using PersonDiary.Lifeevent.ApiClient;
-using PersonDiary.Lifeevent.Domain.EventBus;
 using PersonDiary.Lifeevent.Dto;
 using PersonDiary.Person.Dto;
 

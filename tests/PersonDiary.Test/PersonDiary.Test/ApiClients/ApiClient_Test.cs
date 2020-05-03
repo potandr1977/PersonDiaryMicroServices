@@ -27,7 +27,7 @@ namespace PersonDiary.Test.ApiClients
         public void Setup()
         {
             var serviceProvider = new ServiceCollection()
-                  .AddSingleton<IHttpRequestExecutor, HttpRequestExecutor>()
+                .AddSingleton<IHttpRequestExecutor, HttpRequestExecutor>()
                 .AddSingleton<IUriCreator, UriCreator>()
                 .AddSingleton<IResponseParser, ResponseParser>()
                 .AddSingleton<IConsulApiClient, ConsulApiClient>()

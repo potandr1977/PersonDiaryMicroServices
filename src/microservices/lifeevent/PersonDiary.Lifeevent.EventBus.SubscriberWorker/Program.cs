@@ -16,7 +16,6 @@ using PersonDiary.Infrastructure.HttpApiClient;
 using PersonDiary.Infrastructure.HttpApiClient.Helpers;
 using PersonDiary.Infrastucture.Domain.DataAccess;
 using PersonDiary.Lifeevent.ApiClient;
-using PersonDiary.Lifeevent.Domain.EventBus;
 using PersonDiary.Person.ApiClient;
 using PersonDiary.Lifeevent.EventBus;
 

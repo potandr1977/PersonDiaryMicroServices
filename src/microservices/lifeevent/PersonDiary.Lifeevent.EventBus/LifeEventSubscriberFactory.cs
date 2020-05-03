@@ -1,6 +1,5 @@
 ﻿using PersonDiary.Infrastructure.Domain.Settings;
 using PersonDiary.Infrastructure.EventBus.RabbitMq;
-using PersonDiary.Lifeevent.Domain.EventBus;
 
 namespace PersonDiary.Lifeevent.EventBus
 {

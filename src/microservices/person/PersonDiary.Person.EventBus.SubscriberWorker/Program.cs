@@ -12,8 +12,7 @@ using PersonDiary.Infrastructure.HttpApiClient;
 using PersonDiary.Infrastructure.HttpApiClient.Helpers;
 using PersonDiary.Infrastucture.Domain.DataAccess;
 using PersonDiary.Person.ApiClient;
-using PersonDiary.Person.Domain.EventBus;
-using PersonDiary.Person.EventBus;
+
 
 namespace PersonDiary.Person.EventBus.SubscriberWorker
 {
@@ -24,7 +23,7 @@ namespace PersonDiary.Person.EventBus.SubscriberWorker
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
